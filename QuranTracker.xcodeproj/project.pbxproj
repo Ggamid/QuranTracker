@@ -14,6 +14,7 @@
 		87D699752CE0DE7D007FA1DD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699742CE0DE7D007FA1DD /* HomeView.swift */; };
 		87D699772CE0E008007FA1DD /* Particles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699762CE0E008007FA1DD /* Particles.swift */; };
 		87D699792CE0E385007FA1DD /* ButtonQT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699782CE0E385007FA1DD /* ButtonQT.swift */; };
+		87D6997B2CE0E9F4007FA1DD /* WriteProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6997A2CE0E9F4007FA1DD /* WriteProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		87D699742CE0DE7D007FA1DD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		87D699762CE0E008007FA1DD /* Particles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particles.swift; sourceTree = "<group>"; };
 		87D699782CE0E385007FA1DD /* ButtonQT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonQT.swift; sourceTree = "<group>"; };
+		87D6997A2CE0E9F4007FA1DD /* WriteProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				87D699742CE0DE7D007FA1DD /* HomeView.swift */,
+				87D6997A2CE0E9F4007FA1DD /* WriteProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D699792CE0E385007FA1DD /* ButtonQT.swift in Sources */,
+				87D6997B2CE0E9F4007FA1DD /* WriteProgressView.swift in Sources */,
 				87D699752CE0DE7D007FA1DD /* HomeView.swift in Sources */,
 				87D699662CE0D5CE007FA1DD /* ContentView.swift in Sources */,
 				87D699772CE0E008007FA1DD /* Particles.swift in Sources */,
@@ -316,6 +320,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -345,6 +350,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

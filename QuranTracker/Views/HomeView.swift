@@ -8,24 +8,46 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @State var writeProgressOffset: Int = 1000
+    @State var blurRadius: CGFloat = 0
+    
     var body: some View {
-        VStack{
-            header
+        ZStack{
+            VStack{
+                header
+                
+                Image(.quranTrackerLogo)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 300)
+                    .padding(.vertical, 20)
+                
+                Spacer()
+                    .frame(maxHeight: 100)
+                
+                ButtonQT(){
+                    withAnimation(.bouncy) {
+                        writeProgressOffset = 0
+                        blurRadius = 7
+                    }
+                }
+                    .padding(.horizontal)
+                
+                ButtonQT(text: "Статистика")
+                    .padding(.horizontal)
+                    .padding(.bottom)
+                
+            }
+            .blur(radius: blurRadius)
             
-            Image(.quranTrackerLogo)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 300)
-                .padding(.vertical, 20)
-            
-            Spacer()
-                .frame(maxHeight: 100)
-            
-            ButtonQT()
-                .padding(.horizontal)
-            ButtonQT(text: "Статистика")
-                .padding(.horizontal)
-                .padding(.bottom)
+            WriteProgressView(){
+                withAnimation {
+                    writeProgressOffset = 1000
+                    blurRadius = 0
+                }
+            } onSavePressed: { }
+            .offset(y:CGFloat(writeProgressOffset))
         }
     }
 }
@@ -50,7 +72,6 @@ extension HomeView {
                     .lineLimit(1)
                 
                 Particles()
-
             }
         }
         .frame(maxHeight: 90)
