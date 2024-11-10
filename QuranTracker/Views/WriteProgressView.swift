@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Vortex
+import SwiftfulUI
 
 struct WriteProgressView: View {
     
@@ -26,33 +28,53 @@ struct WriteProgressView: View {
                     amountIsFouced = false
                 }
                 .overlay(alignment: .topTrailing) { xmark }
-            
-            VStack(){
-                
-                header
-                
-                claimDate
-                    .padding(.horizontal)
-                
-                claimFromPage
-                    .padding(.horizontal)
-
-                claimToPage
-                    .padding(.horizontal)
-                    .padding(.bottom)
-                
-                ButtonQT(text: "Сохранить") { 
-                    onSavePressed?()
-                    onXmarkPressed?()
+            VortexViewReader{ proxy in
+                ZStack{
+                    VortexView(.confetti) {
+                        Rectangle()
+                            .fill(.white)
+                            .frame(width: 16, height: 16)
+                            .tag("square")
+                        
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 16)
+                            .tag("circle")
+                    }
+                    .allowsHitTesting(false)
+                    
+                    VStack(){
+                        
+                        header
+                        
+                        claimDate
+                            .padding(.horizontal)
+                        
+                        claimFromPage
+                            .padding(.horizontal)
+                        
+                        claimToPage
+                            .padding(.horizontal)
+                            .padding(.bottom)
+                        
+                        ButtonQT(text: "Сохранить") {
+                            onSavePressed?()
+                            proxy.burst()
+                            DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                                onXmarkPressed?()
+                            }
+                            
+                        }
+                        .padding(.horizontal)
+                        .padding(.bottom, 20)
+                        
+                    }
+                    .frame(maxWidth: 350)
+                    .background(.white.opacity(0.1))
+                    .clipShape(RoundedRectangle(cornerRadius: 40))
+                    .shadow(radius: 20)
                 }
-                    .padding(.horizontal)
-                    .padding(.bottom, 20)
-     
             }
-            .frame(maxWidth: 350)
-            .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 40))
-            .shadow(radius: 20)
         }
     }
 }

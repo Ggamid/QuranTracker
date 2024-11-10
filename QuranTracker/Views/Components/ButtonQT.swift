@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftfulUI
 
 struct ButtonQT: View {
     
@@ -45,9 +46,11 @@ struct ButtonQT: View {
                 }
                 .padding(.horizontal)
             }
-            .onTapGesture {
+            .asButton(.press) {
                 onTap?()
             }
+            
+            
             
             
     }

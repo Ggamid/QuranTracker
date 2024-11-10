@@ -15,6 +15,8 @@
 		87D699772CE0E008007FA1DD /* Particles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699762CE0E008007FA1DD /* Particles.swift */; };
 		87D699792CE0E385007FA1DD /* ButtonQT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699782CE0E385007FA1DD /* ButtonQT.swift */; };
 		87D6997B2CE0E9F4007FA1DD /* WriteProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6997A2CE0E9F4007FA1DD /* WriteProgressView.swift */; };
+		87D6997E2CE1087B007FA1DD /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = 87D6997D2CE1087B007FA1DD /* Vortex */; };
+		87D699812CE11785007FA1DD /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 87D699802CE11785007FA1DD /* SwiftfulUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87D699812CE11785007FA1DD /* SwiftfulUI in Frameworks */,
+				87D6997E2CE1087B007FA1DD /* Vortex in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				87D699732CE0DE6D007FA1DD /* Views */,
-				87D699722CE0DD9F007FA1DD /* Components */,
 				87D699712CE0DD97007FA1DD /* Model */,
 				87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */,
 				87D699652CE0D5CE007FA1DD /* ContentView.swift */,
@@ -97,6 +100,7 @@
 		87D699732CE0DE6D007FA1DD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				87D699722CE0DD9F007FA1DD /* Components */,
 				87D699742CE0DE7D007FA1DD /* HomeView.swift */,
 				87D6997A2CE0E9F4007FA1DD /* WriteProgressView.swift */,
 			);
@@ -119,6 +123,10 @@
 			dependencies = (
 			);
 			name = QuranTracker;
+			packageProductDependencies = (
+				87D6997D2CE1087B007FA1DD /* Vortex */,
+				87D699802CE11785007FA1DD /* SwiftfulUI */,
+			);
 			productName = QuranTracker;
 			productReference = 87D699602CE0D5CE007FA1DD /* QuranTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -147,6 +155,10 @@
 				Base,
 			);
 			mainGroup = 87D699572CE0D5CE007FA1DD;
+			packageReferences = (
+				87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */,
+				87D6997F2CE11785007FA1DD /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
+			);
 			productRefGroup = 87D699612CE0D5CE007FA1DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -386,6 +398,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/Vortex";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+		87D6997F2CE11785007FA1DD /* XCRemoteSwiftPackageReference "SwiftfulUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		87D6997D2CE1087B007FA1DD /* Vortex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */;
+			productName = Vortex;
+		};
+		87D699802CE11785007FA1DD /* SwiftfulUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87D6997F2CE11785007FA1DD /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
+			productName = SwiftfulUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87D699582CE0D5CE007FA1DD /* Project object */;
 }
