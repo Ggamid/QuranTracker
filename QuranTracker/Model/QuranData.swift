@@ -14,6 +14,8 @@ class QuranData {
         
         guard let url = URL(string: "https://api.alquran.cloud/v1/page/\(page)") else { throw FetchingDataError.invalidURL }
         
+        print(url)
+        
         let (data, response) = try await URLSession.shared.data(from: url)
         
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { // CHECK RESPONSE
@@ -21,8 +23,8 @@ class QuranData {
         }
         
         do{
-            let quranPage = try JSONDecoder().decode(QuranPage.self, from: data) // TRY TO DECODE DATA
-            return quranPage
+            let quranPage = try JSONDecoder().decode(DataWrapper.self, from: data) // TRY TO DECODE DATA
+            return quranPage.data
         } catch {
             print(error)
             throw FetchingDataError.InvalidData
@@ -31,6 +33,10 @@ class QuranData {
     }
     
 
+}
+
+struct DataWrapper: Codable {
+    let data: QuranPage
 }
 
 

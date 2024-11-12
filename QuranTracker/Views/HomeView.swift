@@ -11,12 +11,12 @@ struct HomeView: View {
     
     @State var writeProgressOffset: Int = 1000
     @State var blurRadius: CGFloat = 0
-    @State var testText: String = ""
     
     var body: some View {
         ZStack{
             VStack{
                 header
+
                 
                 Image(.quranTrackerLogo)
                     .resizable()
@@ -36,11 +36,6 @@ struct HomeView: View {
                     .padding(.horizontal)
                 
                 ButtonQT(text: "Статистика"){
-                    Task{
-                        
-                        var page = try await QuranData.fetchData(about: 10)
-                        testText = page.surahs.keys.first ?? "error"
-                    }
                 }
                     .padding(.horizontal)
                     .padding(.bottom)
