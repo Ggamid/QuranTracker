@@ -24,7 +24,6 @@ class QuranData {
             let quranPage = try JSONDecoder().decode(DataWrapper.self, from: data) // TRY TO DECODE DATA
             return quranPage.data
         } catch {
-            print(error)
             throw FetchingDataError.InvalidData
         }
     }
