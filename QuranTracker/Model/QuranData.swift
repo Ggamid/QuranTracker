@@ -10,12 +10,10 @@ import Foundation
 class QuranData {
     static func fetchData(about page: Int) async throws -> QuranPage {
         
-        guard page >= 1 || page <= 604 else { throw FetchingDataError.invalidPageNumber }
+        guard (1..<605).contains(page) else { throw FetchingDataError.invalidPageNumber }
         
         guard let url = URL(string: "https://api.alquran.cloud/v1/page/\(page)") else { throw FetchingDataError.invalidURL }
-        
-        print(url)
-        
+
         let (data, response) = try await URLSession.shared.data(from: url)
         
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { // CHECK RESPONSE
@@ -29,8 +27,5 @@ class QuranData {
             print(error)
             throw FetchingDataError.InvalidData
         }
-        
     }
-    
-
 }

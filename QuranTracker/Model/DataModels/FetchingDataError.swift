@@ -8,5 +8,9 @@
 import Foundation
 
 enum FetchingDataError: Error {
-    case invalidPageNumber, invalidURL, errorWhileDecodingData, InvalidResponse, InvalidData
+    case invalidPageNumber
+    case invalidURL
+    case errorWhileDecodingData
+    case InvalidResponse
+    case InvalidData
 }

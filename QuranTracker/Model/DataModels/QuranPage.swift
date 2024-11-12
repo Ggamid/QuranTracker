@@ -7,11 +7,9 @@
 
 import Foundation
 
-
 struct DataWrapper: Codable {
     let data: QuranPage
 }
-
 
 // MARK: - QuranPage
 struct QuranPage: Codable {
