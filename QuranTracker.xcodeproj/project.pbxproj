@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8768329E2CE3835F000575D5 /* QuranData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8768329D2CE3835F000575D5 /* QuranData.swift */; };
 		87D699642CE0D5CE007FA1DD /* QuranTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */; };
 		87D699662CE0D5CE007FA1DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699652CE0D5CE007FA1DD /* ContentView.swift */; };
 		87D699682CE0D5CF007FA1DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D699672CE0D5CF007FA1DD /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8768329D2CE3835F000575D5 /* QuranData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranData.swift; sourceTree = "<group>"; };
 		87D699602CE0D5CE007FA1DD /* QuranTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuranTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranTrackerApp.swift; sourceTree = "<group>"; };
 		87D699652CE0D5CE007FA1DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		87D699712CE0DD97007FA1DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8768329D2CE3835F000575D5 /* QuranData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D699792CE0E385007FA1DD /* ButtonQT.swift in Sources */,
+				8768329E2CE3835F000575D5 /* QuranData.swift in Sources */,
 				87D6997B2CE0E9F4007FA1DD /* WriteProgressView.swift in Sources */,
 				87D699752CE0DE7D007FA1DD /* HomeView.swift in Sources */,
 				87D699662CE0D5CE007FA1DD /* ContentView.swift in Sources */,
