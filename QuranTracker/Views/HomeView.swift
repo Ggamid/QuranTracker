@@ -16,7 +16,6 @@ struct HomeView: View {
         ZStack{
             VStack{
                 header
-
                 
                 Image(.quranTrackerLogo)
                     .resizable()
