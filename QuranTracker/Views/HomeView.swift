@@ -34,9 +34,12 @@ struct HomeView: View {
                 }
                     .padding(.horizontal)
                 
-                ButtonQT(text: "Статистика")
+                ButtonQT(text: "Статистика"){
+                }
                     .padding(.horizontal)
                     .padding(.bottom)
+                
+                
                 
             }
             .blur(radius: blurRadius)
