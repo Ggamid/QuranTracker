@@ -138,6 +138,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				871A18562CE6422700C22A36 /* PBXTargetDependency */,
 			);
 			name = QuranTracker;
 			packageProductDependencies = (
@@ -175,6 +176,7 @@
 			packageReferences = (
 				87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */,
 				87D6997F2CE11785007FA1DD /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
+				871A18522CE6421200C22A36 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = 87D699612CE0D5CE007FA1DD /* Products */;
 			projectDirPath = "";
@@ -215,6 +217,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		871A18562CE6422700C22A36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 871A18552CE6422700C22A36 /* SwiftLintBuildToolPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		87D6996C2CE0D5CF007FA1DD /* Debug */ = {
@@ -420,6 +429,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		871A18522CE6421200C22A36 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.57.0;
+			};
+		};
 		87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/Vortex";
@@ -439,6 +456,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		871A18552CE6422700C22A36 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 871A18522CE6421200C22A36 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
 		87D6997D2CE1087B007FA1DD /* Vortex */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */;

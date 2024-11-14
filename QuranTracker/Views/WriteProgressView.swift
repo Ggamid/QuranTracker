@@ -10,64 +10,56 @@ import Vortex
 import SwiftfulUI
 
 struct WriteProgressView: View {
-    
     @State var dateOfReading: Date = .now
     @State var fromPage: Int = 0
     @State var toPage: Int = 0
-    
     @FocusState private var amountIsFouced: Bool
-    
-    var onXmarkPressed: (() -> Void)? = nil
-    var onSavePressed: (() -> Void)? = nil
-    
+
+    var onXmarkPressed: (() -> Void)?
+    var onSavePressed: (() -> Void)?
+
     var body: some View {
-        ZStack{
-            
+        ZStack {
             Color.white.opacity(0.7)
                 .onTapGesture {
                     amountIsFouced = false
                 }
                 .overlay(alignment: .topTrailing) { xmark }
-            VortexViewReader{ proxy in
-                ZStack{
+
+            VortexViewReader { proxy in
+                ZStack {
                     VortexView(.confetti) {
                         Rectangle()
                             .fill(.white)
                             .frame(width: 16, height: 16)
                             .tag("square")
-                        
                         Circle()
                             .fill(.white)
                             .frame(width: 16)
                             .tag("circle")
                     }
                     .allowsHitTesting(false)
-                    
-                    VStack(){
-                        
+
+                    VStack {
                         header
-                        
+
                         claimDate
                             .padding(.horizontal)
-                        
                         claimFromPage
                             .padding(.horizontal)
-                        
                         claimToPage
                             .padding(.horizontal)
                             .padding(.bottom)
-                        
+
                         ButtonQT(text: "Сохранить") {
                             onSavePressed?()
                             proxy.burst()
-                            DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 onXmarkPressed?()
                             }
-                            
                         }
                         .padding(.horizontal)
                         .padding(.bottom, 20)
-                        
                     }
                     .frame(maxWidth: 350)
                     .background(.white.opacity(0.1))
@@ -80,17 +72,18 @@ struct WriteProgressView: View {
 }
 
 #Preview {
-    ZStack{
+    ZStack {
         HomeView()
             .blur(radius: 6)
+
         WriteProgressView()
     }
 }
 
 extension WriteProgressView {
     private var header: some View {
-        HStack{
-            VStack(alignment: .leading, spacing: -9){
+        HStack {
+            VStack(alignment: .leading, spacing: -9) {
                 Text("Запись")
                 Text("Прогресса")
             }
@@ -98,9 +91,9 @@ extension WriteProgressView {
             .font(.title)
             .fontWeight(.black)
             .offset(x: -20)
-            
+
             Spacer()
-            
+
             Image(.quranTrackerLogo)
                 .resizable()
                 .scaledToFit()
@@ -108,9 +101,8 @@ extension WriteProgressView {
         }
         .padding()
     }
-    
     private var claimDate: some View {
-        HStack{
+        HStack {
             Text("Дата")
                 .font(.title2)
                 .fontWeight(.medium)
@@ -119,9 +111,8 @@ extension WriteProgressView {
             DatePicker("", selection: $dateOfReading, displayedComponents: .date)
         }
     }
-    
     private var claimFromPage: some View {
-        HStack{
+        HStack {
             Text("От")
                 .font(.title2)
                 .fontWeight(.medium)
@@ -133,8 +124,7 @@ extension WriteProgressView {
                 .frame(maxWidth: 30)
         }
     }
-    
-    private var xmark: some View{
+    private var xmark: some View {
         Circle()
             .fill(.yellowQT)
             .frame(height: 50)
@@ -147,9 +137,8 @@ extension WriteProgressView {
                 onXmarkPressed?()
             }
     }
-    
     private var claimToPage: some View {
-        HStack{
+        HStack {
             Text("До")
                 .font(.title2)
                 .fontWeight(.medium)

@@ -8,49 +8,44 @@
 import SwiftUI
 
 struct HomeView: View {
-    
     @State var writeProgressOffset: Int = 1000
     @State var blurRadius: CGFloat = 0
-    
     var body: some View {
-        ZStack{
-            VStack{
+        ZStack {
+            VStack {
                 header
-                
+
                 Image(.quranTrackerLogo)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 300)
                     .padding(.vertical, 20)
-                
+
                 Spacer()
                     .frame(maxHeight: 100)
-                
-                ButtonQT(){
+
+                ButtonQT {
                     withAnimation(.bouncy) {
                         writeProgressOffset = 0
                         blurRadius = 7
                     }
                 }
                     .padding(.horizontal)
-                
-                ButtonQT(text: "Статистика"){
+
+                ButtonQT(text: "Статистика") {
                 }
                     .padding(.horizontal)
                     .padding(.bottom)
-                
-                
-                
             }
             .blur(radius: blurRadius)
-            
-            WriteProgressView(){
+
+            WriteProgressView {
                 withAnimation {
                     writeProgressOffset = 1000
                     blurRadius = 0
                 }
             } onSavePressed: { }
-            .offset(y:CGFloat(writeProgressOffset))
+            .offset(y: CGFloat(writeProgressOffset))
         }
     }
 }
@@ -59,21 +54,19 @@ struct HomeView: View {
     HomeView()
 }
 
-
 extension HomeView {
     private var header: some View {
-        ZStack{
+        ZStack {
             RoundedRectangle(cornerRadius: 100)
                 .fill(.yellowQT)
                 .blur(radius: 7)
-            HStack{
+
+            HStack {
                 Particles()
-                
                 Text("Quran Tracker")
                     .font(.system(size: 27))
                     .fontWeight(.black)
                     .lineLimit(1)
-                
                 Particles()
             }
         }

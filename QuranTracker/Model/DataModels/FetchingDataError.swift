@@ -11,6 +11,6 @@ enum FetchingDataError: Error {
     case invalidPageNumber
     case invalidURL
     case errorWhileDecodingData
-    case InvalidResponse
-    case InvalidData
+    case invalidResponse
+    case invalidData
 }
