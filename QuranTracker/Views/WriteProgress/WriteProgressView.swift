@@ -29,17 +29,7 @@ struct WriteProgressView: View {
 
             VortexViewReader { proxy in
                 ZStack {
-                    VortexView(.confetti) {
-                        Rectangle()
-                            .fill(.white)
-                            .frame(width: 16, height: 16)
-                            .tag("square")
-                        Circle()
-                            .fill(.white)
-                            .frame(width: 16)
-                            .tag("circle")
-                    }
-                    .allowsHitTesting(false)
+                    vortexView
 
                     VStack {
                         header
@@ -54,11 +44,12 @@ struct WriteProgressView: View {
 
                         ButtonQT(text: "Сохранить") {
 
-                            vm.saveReadingSession(modelContext: modelContext)
-
-                            proxy.burst()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                onXmarkPressed?()
+                            if vm.saveReadingSession(modelContext: modelContext) {
+                                proxy.burst()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    onXmarkPressed?()
+                                }
+                                amountIsFouced = false
                             }
                         }
                         .padding(.horizontal)
@@ -71,6 +62,16 @@ struct WriteProgressView: View {
                 }
             }
         }
+        .alert(
+            "Проверьте корректность введенных данных",
+            isPresented: $vm.presentAlert) {
+                Button("Ok") {
+                    vm.presentAlert = false
+                }
+            } message: {
+                Text("Проверьте корректность введенных данных")
+            }
+
     }
 }
 
@@ -84,6 +85,21 @@ struct WriteProgressView: View {
 }
 
 extension WriteProgressView {
+
+    private var vortexView: some View {
+        VortexView(.confetti) {
+            Rectangle()
+                .fill(.white)
+                .frame(width: 16, height: 16)
+                .tag("square")
+            Circle()
+                .fill(.white)
+                .frame(width: 16)
+                .tag("circle")
+        }
+        .allowsHitTesting(false)
+    }
+
     private var header: some View {
         HStack {
             VStack(alignment: .leading, spacing: -9) {
@@ -111,7 +127,8 @@ extension WriteProgressView {
                 .fontWeight(.medium)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-            DatePicker("", selection: $vm.sessionDate, displayedComponents: .date)
+            DatePicker("", selection: $vm.sessionDate, in: ...Date(), displayedComponents: .date)
+                .tint(.yellowQT)
         }
     }
     private var claimFromPage: some View {

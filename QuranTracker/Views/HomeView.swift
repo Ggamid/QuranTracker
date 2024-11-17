@@ -6,46 +6,55 @@
 //
 
 import SwiftUI
+import SwiftfulUI
 
 struct HomeView: View {
+
     @State var writeProgressOffset: Int = 1000
     @State var blurRadius: CGFloat = 0
+    @State private var isNextScreenActive = false
+
     var body: some View {
-        ZStack {
-            VStack {
-                header
+        NavigationStack {
+            ZStack {
+                VStack {
+                    header
 
-                Image(.quranTrackerLogo)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 300)
-                    .padding(.vertical, 20)
+                    Image(.quranTrackerLogo)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 300)
+                        .padding(.vertical, 20)
 
-                Spacer()
-                    .frame(maxHeight: 100)
+                    Spacer()
+                        .frame(maxHeight: 100)
 
-                ButtonQT {
-                    withAnimation(.bouncy) {
-                        writeProgressOffset = 0
-                        blurRadius = 7
+                    ButtonQT {
+                        withAnimation(.bouncy) {
+                            writeProgressOffset = 0
+                            blurRadius = 7
+                        }
+                    }
+                    .padding(.horizontal)
+
+                    ButtonQT(text: "Статистика") {
+                        isNextScreenActive = true
+                    }
+                        .padding(.horizontal)
+                        .padding(.bottom)
+                }
+                .blur(radius: blurRadius)
+                WriteProgressView {
+                    withAnimation {
+                        writeProgressOffset = 1000
+                        blurRadius = 0
                     }
                 }
-                    .padding(.horizontal)
-
-                ButtonQT(text: "Статистика") {
-                }
-                    .padding(.horizontal)
-                    .padding(.bottom)
+                .offset(y: CGFloat(writeProgressOffset))
             }
-            .blur(radius: blurRadius)
-
-            WriteProgressView {
-                withAnimation {
-                    writeProgressOffset = 1000
-                    blurRadius = 0
-                }
+            .navigationDestination(isPresented: $isNextScreenActive) {
+                StatView()
             }
-            .offset(y: CGFloat(writeProgressOffset))
         }
     }
 }

@@ -15,16 +15,22 @@ extension WriteProgressView {
         var sessionDate: Date = .now
         var startPage: Int = 0
         var endPage: Int = 0
+        var presentAlert = false
 
-        func saveReadingSession(modelContext: ModelContext) {
-            DispatchQueue.global().async {
-                let readingSession = QuranReadingSession(
-                    startPage: self.startPage,
-                    endPage: self.endPage,
-                    sessionDate: self.sessionDate
-                )
-                modelContext.insert(readingSession)
+        func saveReadingSession(modelContext: ModelContext) -> Bool {
+            if checkNumbers() {
+                DispatchQueue.global().async {
+                    let readingSession = QuranReadingSession(
+                        startPage: self.startPage,
+                        endPage: self.endPage,
+                        sessionDate: self.sessionDate
+                    )
+                    modelContext.insert(readingSession)
+                }
+                return true
             }
+            presentAlert = true
+            return false
         }
 
         func checkNumbers() -> Bool {

@@ -12,6 +12,9 @@
 		878ACA282CE39A7D0022D1DB /* FetchingDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878ACA272CE39A7D0022D1DB /* FetchingDataError.swift */; };
 		87C08F8F2CE9F10B00944937 /* QuranReadingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F8E2CE9F10B00944937 /* QuranReadingSession.swift */; };
 		87C08F922CE9FB8400944937 /* WriteProgress-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F912CE9FB8400944937 /* WriteProgress-ViewModel.swift */; };
+		87C08F942CEA06A700944937 /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F932CEA06A700944937 /* StatView.swift */; };
+		87C08F962CEA094300944937 /* SessionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F952CEA094300944937 /* SessionsList.swift */; };
+		87C08F9C2CEA121100944937 /* ButtonScaleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F9B2CEA121100944937 /* ButtonScaleModifier.swift */; };
 		87D699642CE0D5CE007FA1DD /* QuranTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */; };
 		87D699662CE0D5CE007FA1DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699652CE0D5CE007FA1DD /* ContentView.swift */; };
 		87D699682CE0D5CF007FA1DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D699672CE0D5CF007FA1DD /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 		878ACA272CE39A7D0022D1DB /* FetchingDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingDataError.swift; sourceTree = "<group>"; };
 		87C08F8E2CE9F10B00944937 /* QuranReadingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranReadingSession.swift; sourceTree = "<group>"; };
 		87C08F912CE9FB8400944937 /* WriteProgress-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WriteProgress-ViewModel.swift"; sourceTree = "<group>"; };
+		87C08F932CEA06A700944937 /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
+		87C08F952CEA094300944937 /* SessionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsList.swift; sourceTree = "<group>"; };
+		87C08F9B2CEA121100944937 /* ButtonScaleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonScaleModifier.swift; sourceTree = "<group>"; };
 		87D699602CE0D5CE007FA1DD /* QuranTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuranTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranTrackerApp.swift; sourceTree = "<group>"; };
 		87D699652CE0D5CE007FA1DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +79,14 @@
 			path = WriteProgress;
 			sourceTree = "<group>";
 		};
+		87C08F9A2CEA11F100944937 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				87C08F9B2CEA121100944937 /* ButtonScaleModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		87D699572CE0D5CE007FA1DD = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +106,7 @@
 		87D699622CE0D5CE007FA1DD /* QuranTracker */ = {
 			isa = PBXGroup;
 			children = (
+				87C08F9A2CEA11F100944937 /* Modifiers */,
 				87D699732CE0DE6D007FA1DD /* Views */,
 				87D699712CE0DD97007FA1DD /* Model */,
 				87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */,
@@ -134,6 +149,8 @@
 				87C08F902CE9FB6500944937 /* WriteProgress */,
 				87D699722CE0DD9F007FA1DD /* Components */,
 				87D699742CE0DE7D007FA1DD /* HomeView.swift */,
+				87C08F932CEA06A700944937 /* StatView.swift */,
+				87C08F952CEA094300944937 /* SessionsList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,14 +235,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87C08F942CEA06A700944937 /* StatView.swift in Sources */,
 				87D699792CE0E385007FA1DD /* ButtonQT.swift in Sources */,
 				878ACA282CE39A7D0022D1DB /* FetchingDataError.swift in Sources */,
 				8768329E2CE3835F000575D5 /* QuranData.swift in Sources */,
 				87D6997B2CE0E9F4007FA1DD /* WriteProgressView.swift in Sources */,
+				87C08F962CEA094300944937 /* SessionsList.swift in Sources */,
 				87D699752CE0DE7D007FA1DD /* HomeView.swift in Sources */,
 				87D699662CE0D5CE007FA1DD /* ContentView.swift in Sources */,
 				87D699772CE0E008007FA1DD /* Particles.swift in Sources */,
 				878ACA262CE39A550022D1DB /* QuranPage.swift in Sources */,
+				87C08F9C2CEA121100944937 /* ButtonScaleModifier.swift in Sources */,
 				87C08F922CE9FB8400944937 /* WriteProgress-ViewModel.swift in Sources */,
 				87D699642CE0D5CE007FA1DD /* QuranTrackerApp.swift in Sources */,
 				87C08F8F2CE9F10B00944937 /* QuranReadingSession.swift in Sources */,
