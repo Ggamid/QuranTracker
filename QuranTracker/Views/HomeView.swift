@@ -44,7 +44,7 @@ struct HomeView: View {
                     writeProgressOffset = 1000
                     blurRadius = 0
                 }
-            } onSavePressed: { }
+            }
             .offset(y: CGFloat(writeProgressOffset))
         }
     }

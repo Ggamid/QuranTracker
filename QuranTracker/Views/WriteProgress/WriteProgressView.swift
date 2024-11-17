@@ -8,15 +8,16 @@
 import SwiftUI
 import Vortex
 import SwiftfulUI
+import SwiftData
 
 struct WriteProgressView: View {
-    @State var dateOfReading: Date = .now
-    @State var fromPage: Int = 0
-    @State var toPage: Int = 0
+
+    @Query(sort: \QuranReadingSession.sessionDate) var readingSessions: [QuranReadingSession]
+    @Environment(\.modelContext) var modelContext
     @FocusState private var amountIsFouced: Bool
+    @State var vm = ViewModel()
 
     var onXmarkPressed: (() -> Void)?
-    var onSavePressed: (() -> Void)?
 
     var body: some View {
         ZStack {
@@ -52,9 +53,11 @@ struct WriteProgressView: View {
                             .padding(.bottom)
 
                         ButtonQT(text: "Сохранить") {
-                            onSavePressed?()
+
+                            vm.saveReadingSession(modelContext: modelContext)
+
                             proxy.burst()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                 onXmarkPressed?()
                             }
                         }
@@ -108,7 +111,7 @@ extension WriteProgressView {
                 .fontWeight(.medium)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-            DatePicker("", selection: $dateOfReading, displayedComponents: .date)
+            DatePicker("", selection: $vm.sessionDate, displayedComponents: .date)
         }
     }
     private var claimFromPage: some View {
@@ -118,7 +121,7 @@ extension WriteProgressView {
                 .fontWeight(.medium)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-            TextField("", value: $fromPage, format: .number)
+            TextField("", value: $vm.startPage, format: .number)
                 .focused($amountIsFouced)
                 .keyboardType(.numberPad)
                 .frame(maxWidth: 30)
@@ -144,7 +147,7 @@ extension WriteProgressView {
                 .fontWeight(.medium)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-            TextField("", value: $toPage, format: .number)
+            TextField("", value: $vm.endPage, format: .number)
                 .focused($amountIsFouced)
                 .keyboardType(.numberPad)
                 .frame(maxWidth: 30)

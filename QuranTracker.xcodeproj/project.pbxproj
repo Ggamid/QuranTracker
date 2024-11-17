@@ -11,6 +11,7 @@
 		878ACA262CE39A550022D1DB /* QuranPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878ACA252CE39A550022D1DB /* QuranPage.swift */; };
 		878ACA282CE39A7D0022D1DB /* FetchingDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878ACA272CE39A7D0022D1DB /* FetchingDataError.swift */; };
 		87C08F8F2CE9F10B00944937 /* QuranReadingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F8E2CE9F10B00944937 /* QuranReadingSession.swift */; };
+		87C08F922CE9FB8400944937 /* WriteProgress-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F912CE9FB8400944937 /* WriteProgress-ViewModel.swift */; };
 		87D699642CE0D5CE007FA1DD /* QuranTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */; };
 		87D699662CE0D5CE007FA1DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699652CE0D5CE007FA1DD /* ContentView.swift */; };
 		87D699682CE0D5CF007FA1DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D699672CE0D5CF007FA1DD /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		878ACA252CE39A550022D1DB /* QuranPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranPage.swift; sourceTree = "<group>"; };
 		878ACA272CE39A7D0022D1DB /* FetchingDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingDataError.swift; sourceTree = "<group>"; };
 		87C08F8E2CE9F10B00944937 /* QuranReadingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranReadingSession.swift; sourceTree = "<group>"; };
+		87C08F912CE9FB8400944937 /* WriteProgress-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WriteProgress-ViewModel.swift"; sourceTree = "<group>"; };
 		87D699602CE0D5CE007FA1DD /* QuranTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuranTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranTrackerApp.swift; sourceTree = "<group>"; };
 		87D699652CE0D5CE007FA1DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,15 @@
 				87C08F8E2CE9F10B00944937 /* QuranReadingSession.swift */,
 			);
 			path = DataModels;
+			sourceTree = "<group>";
+		};
+		87C08F902CE9FB6500944937 /* WriteProgress */ = {
+			isa = PBXGroup;
+			children = (
+				87D6997A2CE0E9F4007FA1DD /* WriteProgressView.swift */,
+				87C08F912CE9FB8400944937 /* WriteProgress-ViewModel.swift */,
+			);
+			path = WriteProgress;
 			sourceTree = "<group>";
 		};
 		87D699572CE0D5CE007FA1DD = {
@@ -120,9 +131,9 @@
 		87D699732CE0DE6D007FA1DD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				87C08F902CE9FB6500944937 /* WriteProgress */,
 				87D699722CE0DD9F007FA1DD /* Components */,
 				87D699742CE0DE7D007FA1DD /* HomeView.swift */,
-				87D6997A2CE0E9F4007FA1DD /* WriteProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,6 +226,7 @@
 				87D699662CE0D5CE007FA1DD /* ContentView.swift in Sources */,
 				87D699772CE0E008007FA1DD /* Particles.swift in Sources */,
 				878ACA262CE39A550022D1DB /* QuranPage.swift in Sources */,
+				87C08F922CE9FB8400944937 /* WriteProgress-ViewModel.swift in Sources */,
 				87D699642CE0D5CE007FA1DD /* QuranTrackerApp.swift in Sources */,
 				87C08F8F2CE9F10B00944937 /* QuranReadingSession.swift in Sources */,
 			);

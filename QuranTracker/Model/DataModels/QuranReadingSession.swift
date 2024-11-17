@@ -13,7 +13,7 @@ class QuranReadingSession {
     let startPage: Int
     let endPage: Int
     let sessionDate: Date
-    
+
     var pageAmount: Int {
         endPage - startPage
     }
@@ -23,11 +23,11 @@ class QuranReadingSession {
         self.endPage = endPage
         self.sessionDate = sessionDate
     }
-    
+
     func getStringDate() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yy"
-        
+
         return formatter.string(from: self.sessionDate)
     }
 }
