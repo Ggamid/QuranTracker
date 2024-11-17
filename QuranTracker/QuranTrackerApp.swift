@@ -14,6 +14,6 @@ struct QuranTrackerApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: QuranReadingSession.self)
+        .modelContainer(for: [QuranReadingSession.self])
     }
 }

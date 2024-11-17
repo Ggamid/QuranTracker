@@ -27,6 +27,8 @@ extension WriteProgressView {
                     )
                     modelContext.insert(readingSession)
                 }
+                startPage = 0
+                endPage = 0
                 return true
             }
             presentAlert = true
