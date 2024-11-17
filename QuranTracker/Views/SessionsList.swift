@@ -9,16 +9,17 @@ import SwiftUI
 import SwiftData
 
 struct SessionsList: View {
-
     @Query(sort: \QuranReadingSession.sessionDate) var readingSessions: [QuranReadingSession]
 
     var body: some View {
         ScrollView {
             ForEach(readingSessions) { session in
-                HStack {
-                    Text(session.getStringDate())
-                    Text("\(session.pageAmount)")
-                }
+                SessionsListRow(
+                    date: session.getStringDate(),
+                    pageAmount: session.pageAmount,
+                    startPage: session.startPage,
+                    endPage: session.endPage
+                )
             }
         }
     }

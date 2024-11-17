@@ -15,6 +15,7 @@
 		87C08F942CEA06A700944937 /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F932CEA06A700944937 /* StatView.swift */; };
 		87C08F962CEA094300944937 /* SessionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F952CEA094300944937 /* SessionsList.swift */; };
 		87C08F9C2CEA121100944937 /* ButtonScaleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F9B2CEA121100944937 /* ButtonScaleModifier.swift */; };
+		87C08F9E2CEA2F1500944937 /* SessionsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C08F9D2CEA2F1500944937 /* SessionsListRow.swift */; };
 		87D699642CE0D5CE007FA1DD /* QuranTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */; };
 		87D699662CE0D5CE007FA1DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699652CE0D5CE007FA1DD /* ContentView.swift */; };
 		87D699682CE0D5CF007FA1DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D699672CE0D5CF007FA1DD /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		87C08F932CEA06A700944937 /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		87C08F952CEA094300944937 /* SessionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsList.swift; sourceTree = "<group>"; };
 		87C08F9B2CEA121100944937 /* ButtonScaleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonScaleModifier.swift; sourceTree = "<group>"; };
+		87C08F9D2CEA2F1500944937 /* SessionsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsListRow.swift; sourceTree = "<group>"; };
 		87D699602CE0D5CE007FA1DD /* QuranTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuranTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranTrackerApp.swift; sourceTree = "<group>"; };
 		87D699652CE0D5CE007FA1DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				87D699762CE0E008007FA1DD /* Particles.swift */,
 				87D699782CE0E385007FA1DD /* ButtonQT.swift */,
+				87C08F9D2CEA2F1500944937 /* SessionsListRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87C08F942CEA06A700944937 /* StatView.swift in Sources */,
+				87C08F9E2CEA2F1500944937 /* SessionsListRow.swift in Sources */,
 				87D699792CE0E385007FA1DD /* ButtonQT.swift in Sources */,
 				878ACA282CE39A7D0022D1DB /* FetchingDataError.swift in Sources */,
 				8768329E2CE3835F000575D5 /* QuranData.swift in Sources */,

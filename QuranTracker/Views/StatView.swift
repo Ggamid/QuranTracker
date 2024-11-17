@@ -17,13 +17,14 @@ struct StatView: View {
                     .frame(height: 300)
                     .padding(.vertical, 20)
             }
-        }
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink {
-                    SessionsList()
-                } label: {
-                    Image(systemName: "line.3.horizontal")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        SessionsList()
+                    } label: {
+                        Image(systemName: "book.pages")
+                            .foregroundStyle(.orangeQT)
+                    }
                 }
             }
         }
