@@ -10,8 +10,8 @@ import SwiftfulUI
 
 struct HomeView: View {
 
-    @State var writeProgressOffset: Int = 1000
-    @State var blurRadius: CGFloat = 0
+    @State var writeProgressOffset: Int = 0
+    @State var blurRadius: CGFloat = 7
     @State private var isNextScreenActive = false
 
     var body: some View {
