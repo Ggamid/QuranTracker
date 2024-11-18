@@ -32,34 +32,47 @@ struct WriteProgressView: View {
                     vortexView
 
                     VStack {
-                        header
+                        currentPosition
 
-                        claimDate
-                            .padding(.horizontal)
-                        claimFromPage
-                            .padding(.horizontal)
-                        claimToPage
-                            .padding(.horizontal)
-                            .padding(.bottom)
+                        VStack {
+                            header
 
-                        ButtonQT(text: "Сохранить") {
+                            claimDate
+                                .padding(.horizontal)
+                            claimFromPage
+                                .padding(.horizontal)
+                            claimToPage
+                                .padding(.horizontal)
+                                .padding(.bottom)
 
-                            if vm.saveReadingSession(modelContext: modelContext) {
-                                proxy.burst()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                    onXmarkPressed?()
+                            ButtonQT(text: "Сохранить") {
+
+                                if vm.saveReadingSession(modelContext: modelContext) {
+                                    proxy.burst()
+                                    Task {
+                                        guard let lastReadingSession = readingSessions.last else { return }
+                                        await vm.getSurahName(quranReadingSession: lastReadingSession)
+                                    }
+
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { onXmarkPressed?() }
+                                    amountIsFouced = false
                                 }
-                                amountIsFouced = false
                             }
+                            .padding(.horizontal)
+                            .padding(.bottom, 20)
                         }
-                        .padding(.horizontal)
-                        .padding(.bottom, 20)
+                        .frame(maxWidth: 350)
+                        .background(.white.opacity(0.1))
+                        .clipShape(RoundedRectangle(cornerRadius: 40))
+                        .shadow(radius: 20)
                     }
-                    .frame(maxWidth: 350)
-                    .background(.white.opacity(0.1))
-                    .clipShape(RoundedRectangle(cornerRadius: 40))
-                    .shadow(radius: 20)
                 }
+            }
+        }
+        .onAppear {
+            Task {
+                guard let lastReadingSession = readingSessions.last else { return }
+                await vm.getSurahName(quranReadingSession: lastReadingSession)
             }
         }
         .alert(
@@ -71,7 +84,6 @@ struct WriteProgressView: View {
             } message: {
                 Text("Проверьте корректность введенных данных")
             }
-
     }
 }
 
@@ -169,5 +181,25 @@ extension WriteProgressView {
                 .keyboardType(.numberPad)
                 .frame(maxWidth: 30)
         }
+    }
+    private var currentPosition: some View {
+        VStack {
+            if let currentPage = vm.currentPage, let currentSurah = vm.currentSurah {
+                Text("Текущая позиция")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                HStack {
+                    VStack {
+                        Text("страница.")
+                        Text("\(currentPage)")
+                    }
+                    VStack {
+                        Text("Сура")
+                        Text(currentSurah)
+                    }
+                }
+            }
+        }
+        .frame(height: 100)
     }
 }
