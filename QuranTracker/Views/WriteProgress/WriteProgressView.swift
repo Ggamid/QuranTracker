@@ -49,13 +49,10 @@ struct WriteProgressView: View {
 
                                 if vm.saveReadingSession(modelContext: modelContext) {
                                     proxy.burst()
-                                    Task {
-                                        guard let lastReadingSession = readingSessions.last else { return }
-                                        await vm.getSurahName(quranReadingSession: lastReadingSession)
-                                    }
 
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { onXmarkPressed?() }
-                                    amountIsFouced = false
+                                    getInformationAboutCurrentPosition()
+
+                                    closeWriteProgressViewWithDelay()
                                 }
                             }
                             .padding(.horizontal)
@@ -70,10 +67,7 @@ struct WriteProgressView: View {
             }
         }
         .onAppear {
-            Task {
-                guard let lastReadingSession = readingSessions.last else { return }
-                await vm.getSurahName(quranReadingSession: lastReadingSession)
-            }
+            getInformationAboutCurrentPosition()
         }
         .alert(
             "Проверьте корректность введенных данных",
@@ -201,5 +195,17 @@ extension WriteProgressView {
             }
         }
         .frame(height: 100)
+    }
+
+    private func closeWriteProgressViewWithDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { onXmarkPressed?() }
+        amountIsFouced = false
+    }
+
+    private func getInformationAboutCurrentPosition() {
+        Task {
+            guard let lastReadingSession = readingSessions.last else { return }
+            await vm.getSurahName(quranReadingSession: lastReadingSession)
+        }
     }
 }
