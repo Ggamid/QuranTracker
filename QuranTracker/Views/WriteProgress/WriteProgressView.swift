@@ -32,7 +32,10 @@ struct WriteProgressView: View {
                     vortexView
 
                     VStack {
-                        currentPosition
+                        VStack {
+                            currentPosition
+                        }
+                        .frame(height: 100)
 
                         VStack {
                             header
@@ -176,25 +179,24 @@ extension WriteProgressView {
                 .frame(maxWidth: 30)
         }
     }
+
+    @ViewBuilder
     private var currentPosition: some View {
-        VStack {
-            if let currentPage = vm.currentPage, let currentSurah = vm.currentSurah {
-                Text("Текущая позиция")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                HStack {
-                    VStack {
-                        Text("страница.")
-                        Text("\(currentPage)")
-                    }
-                    VStack {
-                        Text("Сура")
-                        Text(currentSurah)
-                    }
+        if let currentPage = vm.currentPage, let currentSurah = vm.currentSurah {
+            Text("Текущая позиция")
+                .font(.title2)
+                .fontWeight(.bold)
+            HStack {
+                VStack {
+                    Text("страница.")
+                    Text("\(currentPage)")
+                }
+                VStack {
+                    Text("Сура")
+                    Text(currentSurah)
                 }
             }
         }
-        .frame(height: 100)
     }
 
     private func closeWriteProgressViewWithDelay() {
@@ -203,9 +205,14 @@ extension WriteProgressView {
     }
 
     private func getInformationAboutCurrentPosition() {
-        Task {
-            guard let lastReadingSession = readingSessions.last else { return }
-            await vm.getSurahName(quranReadingSession: lastReadingSession)
+        if !readingSessions.isEmpty {
+            Task {
+                guard let lastReadingSession = readingSessions.last else { return }
+                await vm.getSurahName(quranReadingSession: lastReadingSession)
+            }
+        } else {
+            vm.currentPage = nil
+            vm.currentSurah = nil
         }
     }
 }

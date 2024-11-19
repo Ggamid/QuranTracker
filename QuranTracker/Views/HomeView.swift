@@ -44,6 +44,7 @@ struct HomeView: View {
                         .padding(.bottom)
                 }
                 .blur(radius: blurRadius)
+
                 WriteProgressView {
                     withAnimation {
                         writeProgressOffset = 1000
