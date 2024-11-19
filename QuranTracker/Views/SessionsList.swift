@@ -10,7 +10,9 @@ import SwiftData
 
 struct SessionsList: View {
     @Query(sort: \QuranReadingSession.sessionDate) var readingSessions: [QuranReadingSession]
-
+    #if DEBUG
+    @Environment(\.modelContext) var modelContext
+    #endif
     var body: some View {
         ScrollView {
             ForEach(readingSessions) { session in
@@ -22,6 +24,20 @@ struct SessionsList: View {
                 )
             }
         }
+        #if DEBUG
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    for session in readingSessions {
+                        modelContext.delete(session)
+                    }
+                } label: {
+                    Image(systemName: "trash")
+                }
+
+            }
+        }
+        #endif
     }
 }
 
