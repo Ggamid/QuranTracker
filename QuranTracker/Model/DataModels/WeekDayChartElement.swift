@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+class WeekDayChartElement: Identifiable {
+    let id = UUID()
+    var amountOfPage: Int = 0
+    let weekDay: String
+
+    init(amountOfPage: Int, weekDay: String) {
+        self.amountOfPage = amountOfPage
+        self.weekDay = weekDay
+    }
+}
