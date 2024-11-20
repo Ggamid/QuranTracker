@@ -42,9 +42,9 @@ struct StatView: View {
     StatView()
 }
 
-extension StatView {
+private extension StatView {
     @ViewBuilder
-    private var progressInPages: some View {
+    var progressInPages: some View {
         if !readingSessions.isEmpty {
             VStack {
                 Text("Прогресс в страницах")
@@ -75,9 +75,9 @@ extension StatView {
         } else {
             Text("Запишите свой первый прогресс чтобы увидеть статистику чтения!")
                 .font(.title3)
-                .padding()
-                .multilineTextAlignment(.center)
                 .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .padding()
         }
     }
 }
