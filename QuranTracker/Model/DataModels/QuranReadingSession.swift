@@ -18,13 +18,21 @@ class QuranReadingSession {
         endPage - startPage
     }
 
+    var stringDate: String {
+        getStringDate()
+    }
+
+    var weekDay: String {
+        Date.getWeekDayInString(from: sessionDate.getWeekDayInInt())
+    }
+
     init(startPage: Int, endPage: Int, sessionDate: Date) {
         self.startPage = startPage
         self.endPage = endPage
         self.sessionDate = sessionDate
     }
 
-    func getStringDate() -> String {
+    private func getStringDate() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yy"
 

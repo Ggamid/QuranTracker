@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		872C2A062CEF1FBB00B06A11 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C2A052CEF1FBB00B06A11 /* Date+Extension.swift */; };
+		8748482A2CEE4D1D00919F1F /* WeekDayChartElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874848292CEE4D1D00919F1F /* WeekDayChartElement.swift */; };
 		8768329E2CE3835F000575D5 /* QuranData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8768329D2CE3835F000575D5 /* QuranData.swift */; };
 		878ACA262CE39A550022D1DB /* QuranPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878ACA252CE39A550022D1DB /* QuranPage.swift */; };
 		878ACA282CE39A7D0022D1DB /* FetchingDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878ACA272CE39A7D0022D1DB /* FetchingDataError.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		872C2A052CEF1FBB00B06A11 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		874848292CEE4D1D00919F1F /* WeekDayChartElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayChartElement.swift; sourceTree = "<group>"; };
 		8768329D2CE3835F000575D5 /* QuranData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranData.swift; sourceTree = "<group>"; };
 		878ACA252CE39A550022D1DB /* QuranPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranPage.swift; sourceTree = "<group>"; };
 		878ACA272CE39A7D0022D1DB /* FetchingDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingDataError.swift; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 				878ACA252CE39A550022D1DB /* QuranPage.swift */,
 				878ACA272CE39A7D0022D1DB /* FetchingDataError.swift */,
 				87C08F8E2CE9F10B00944937 /* QuranReadingSession.swift */,
+				874848292CEE4D1D00919F1F /* WeekDayChartElement.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 			children = (
 				878ACA242CE39A3B0022D1DB /* DataModels */,
 				8768329D2CE3835F000575D5 /* QuranData.swift */,
+				872C2A052CEF1FBB00B06A11 /* Date+Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,7 +253,9 @@
 				87C08F962CEA094300944937 /* SessionsList.swift in Sources */,
 				87D699752CE0DE7D007FA1DD /* HomeView.swift in Sources */,
 				87D699662CE0D5CE007FA1DD /* ContentView.swift in Sources */,
+				872C2A062CEF1FBB00B06A11 /* Date+Extension.swift in Sources */,
 				87D699772CE0E008007FA1DD /* Particles.swift in Sources */,
+				8748482A2CEE4D1D00919F1F /* WeekDayChartElement.swift in Sources */,
 				878ACA262CE39A550022D1DB /* QuranPage.swift in Sources */,
 				87C08F9C2CEA121100944937 /* ButtonScaleModifier.swift in Sources */,
 				87C08F922CE9FB8400944937 /* WriteProgress+ViewModel.swift in Sources */,
