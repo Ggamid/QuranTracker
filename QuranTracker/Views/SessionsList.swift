@@ -17,7 +17,7 @@ struct SessionsList: View {
         ScrollView {
             ForEach(readingSessions) { session in
                 SessionsListRow(
-                    date: session.getStringDate(),
+                    date: session.stringDate,
                     pageAmount: session.pageAmount,
                     startPage: session.startPage,
                     endPage: session.endPage
