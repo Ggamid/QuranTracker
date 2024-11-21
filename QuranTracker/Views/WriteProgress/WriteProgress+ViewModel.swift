@@ -53,32 +53,16 @@ extension WriteProgressView {
                 currentSurah = surah.first?.value.englishName
                 return
 
-            } catch FetchingDataError.invalidResponse {
-                print(#function, "Invalid Response")
-                return
-            } catch FetchingDataError.invalidURL {
-                print(#function, "invalidURL")
-                return
-            } catch FetchingDataError.invalidData {
-                print(#function, "invalidData")
-                return
-            } catch FetchingDataError.invalidPageNumber {
-                print(#function, "invalidPageNumber")
-                return
-            } catch FetchingDataError.errorWhileDecodingData {
-                print(#function, "errorWhileDecodingData")
-                return
-            } catch {
-                print(#function, "unknown error")
+            } catch let error {
+                print(#function, "\(error)")
                 return
             }
         }
 
         private func checkNumbers() -> Bool {
             startPage < endPage
-                    && (0...605).contains(startPage)
-                    && (0...605).contains(endPage)
-                    && endPage != 0
+                    && (1...605).contains(startPage)
+                    && (1...605).contains(endPage)
         }
     }
 }
