@@ -39,30 +39,3 @@ class QuranReadingSession {
         return formatter.string(from: self.sessionDate)
     }
 }
-
-extension Date {
-    func getWeekDayInInt() -> Int {
-        Calendar.current.component(.weekday, from: self)
-    }
-
-    static func getWeekDayInString(from intWeekDay: Int) -> String {
-        switch intWeekDay {
-        case 7:
-            "Сб"
-        case 6:
-            "Пт"
-        case 5:
-            "Чт"
-        case 4:
-            "Ср"
-        case 3:
-            "Вт"
-        case 2:
-            "Пн"
-        case 1:
-            "Вс"
-        default:
-            ""
-        }
-    }
-}

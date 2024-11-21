@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeekDayChartElement: Identifiable {
+final class WeekDayChartElement: Identifiable {
     let id = UUID()
     var amountOfPage: Int = 0
     let weekDay: String

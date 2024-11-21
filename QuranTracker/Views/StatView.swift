@@ -89,9 +89,7 @@ private extension StatView {
     }
 
     func getMaxAmountOfPage() -> Int {
-        (weekDaysArr.sorted(by: { first, second in
-            first.amountOfPage < second.amountOfPage
-        }).last?.amountOfPage ?? 30) + 10
+        (weekDaysArr.sorted(by: { $0.amountOfPage < $1.amountOfPage }).last?.amountOfPage ?? 30) + 10
     }
 
     @ViewBuilder
