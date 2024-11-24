@@ -10,7 +10,6 @@ import SwiftData
 import SwiftfulUI
 import Charts
 
-
 struct StatView: View {
 
     @Query(sort: \QuranReadingSession.sessionDate) var readingSessions: [QuranReadingSession]
@@ -18,20 +17,12 @@ struct StatView: View {
     @State var date: Date = .now
     @State var weekDaysArr: [WeekDayChartElement] = []
 
-
     var body: some View {
         NavigationStack {
-            VStack {
-
-                progressInPages
-
-                weekChartView
-
-                Image(.quranTrackerLogo)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 300)
-                    .padding(.vertical, 20)
+            ScrollView {
+                VStack {
+                    stats
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -55,41 +46,56 @@ struct StatView: View {
 }
 
 private extension StatView {
+
     @ViewBuilder
-    var progressInPages: some View {
+    var stats: some View {
         if !readingSessions.isEmpty {
-            VStack {
-                Text("Прогресс в страницах")
-                    .font(.title2)
-                    .fontWeight(.bold)
-
-                HStack {
-                    Text("0")
-                    Spacer()
-                    Text("604")
-                }
-                .font(.title2)
-                .frame(maxWidth: .infinity)
-
-                CustomProgressBar(
-                    selection: Double(readingSessions.last?.endPage ?? 0),
-                    range: 0...605,
-                    backgroundColor: .black,
-                    foregroundColor: .orangeQT,
-                    cornerRadius: 10,
-                    height: 8
-                )
-            }
-            .padding()
-            .background(.yellowQT)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .padding()
+            progressInPages
+            weekChartView
         } else {
             Text("Запишите свой первый прогресс чтобы увидеть статистику чтения!")
                 .font(.title3)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
                 .padding()
+
+            Image(.quranTrackerLogo)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 300)
+                .padding(.vertical, 20)
+        }
+    }
+
+    var progressInPages: some View {
+        VStack {
+            Text("Прогресс в страницах")
+                .font(.title2)
+                .fontWeight(.bold)
+
+            HStack {
+                Text("0")
+                Spacer()
+                Text("604")
+            }
+            .font(.title2)
+            .frame(maxWidth: .infinity)
+
+            CustomProgressBar(
+                selection: Double(readingSessions.last?.endPage ?? 0),
+                range: 0...605,
+                backgroundColor: .black,
+                foregroundColor: .orangeQT,
+                cornerRadius: 10,
+                height: 8
+            )
+        }
+        .padding()
+        .background(.yellowQT)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .padding()
+    }
+
     func getWeekStatArr(from readingSessions: [QuranReadingSession], date: Date) {
 
         let currentWeekDay = Calendar.current.component(.weekday, from: date)
@@ -99,7 +105,7 @@ private extension StatView {
             $0.sessionDate.timeIntervalSince1970 >= date.timeIntervalSince1970 - daysInSeconds
         }
 
-        var weekStatArr: [WeekDayChartElement] = generateArrForWeekStat()
+        let weekStatArr: [WeekDayChartElement] = generateArrForWeekStat()
 
         for weekDayStatIndex in 0..<weekStatArr.count {
             for readingSessionIndex in 0..<thisWeekReadingSessions.count {
