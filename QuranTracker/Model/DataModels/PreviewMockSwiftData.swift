@@ -20,7 +20,7 @@ class PreviewMockSwiftData {
                     startPage: Int.random(in: 10..<20),
                     endPage: Int.random(in: 20..<30),
                     sessionDate: Date(
-                        timeIntervalSince1970: Date.now.timeIntervalSince1970 + Double.random(in: 0...60*60*24*7)
+                        timeIntervalSince1970: Date.now.timeIntervalSince1970 + Double.random(in: 0...Date.weekInSeconds)
                     )
                 )
                 container.mainContext.insert(readingSession)
