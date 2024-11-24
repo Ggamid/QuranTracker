@@ -42,7 +42,9 @@ struct StatView: View {
 }
 
 #Preview {
-    StatView()
+
+    return StatView()
+        .modelContainer(PreviewMockSwiftData.previewContainer)
 }
 
 private extension StatView {
@@ -96,13 +98,14 @@ private extension StatView {
         .padding()
     }
 
-    func getWeekStatArr(from readingSessions: [QuranReadingSession], date: Date) {
+    func getWeekStatArr(from readingSessions: [QuranReadingSession], date: Date) { // для получения сессий чтения для текущей недели
 
-        let currentWeekDay = Calendar.current.component(.weekday, from: date)
-        let daysInSeconds = Double((currentWeekDay*(60*60*24)))
+        guard let endOfWeek = Date.endOfWeek(from: date) else { return }
+        guard let startOfWeek = Date.startOfWeek(from: date) else { return }
 
         let thisWeekReadingSessions = readingSessions.filter {
-            $0.sessionDate.timeIntervalSince1970 >= date.timeIntervalSince1970 - daysInSeconds
+            $0.sessionDate.timeIntervalSince1970 >= startOfWeek.timeIntervalSince1970 &&
+            $0.sessionDate.timeIntervalSince1970 <= endOfWeek.timeIntervalSince1970 + Date.dayInSeconds
         }
 
         let weekStatArr: [WeekDayChartElement] = generateArrForWeekStat()
@@ -142,10 +145,7 @@ private extension StatView {
     @ViewBuilder
     var weekChartView: some View {
         if !weekDaysArr.isEmpty {
-            Text("Недельная статистика чтения")
-                .font(.title2)
-                .fontWeight(.medium)
-            Text("Всего прочтено страниц: \(weekDaysArr.reduce(0, {$0 + $1.amountOfPage}))")
+            headerOfChartView
 
             Chart {
                 ForEach(weekDaysArr) { weekDayStat in
@@ -163,5 +163,43 @@ private extension StatView {
             .chartYScale(domain: 0...getMaxAmountOfPage())
             .padding()
         }
+    }
+    
+    @ViewBuilder
+    var headerOfChartView: some View {
+        VStack(alignment: .leading) {
+            Text("Недельная статистика чтения")
+                .font(.title2)
+                .fontWeight(.medium)
+            Text("Всего прочтено страниц: \(weekDaysArr.reduce(0, {$0 + $1.amountOfPage}))")
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading)
+
+        HStack(spacing: 30) {
+
+            Text("\(Date.getStartAndEndOfWeek(from: date))")
+                .font(.title3)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading)
+
+            Button {
+                date = Date(timeIntervalSince1970: date.timeIntervalSince1970 - Date.weekInSeconds)
+                getWeekStatArr(from: readingSessions, date: date)
+            } label: {
+                Image(systemName: "chevron.left")
+            }
+
+            Button {
+                date = Date(timeIntervalSince1970: date.timeIntervalSince1970 + Date.weekInSeconds)
+                getWeekStatArr(from: readingSessions, date: date)
+            } label: {
+                 Image(systemName: "chevron.right")
+            }
+            .padding(.trailing)
+
+        }
+        .font(.title)
+        .padding(5)
     }
 }
