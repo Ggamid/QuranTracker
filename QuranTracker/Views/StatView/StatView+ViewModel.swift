@@ -21,8 +21,8 @@ extension StatView {
         // для получения сессий чтения для текущей недели
         func getWeekStatArr(from readingSessions: [QuranReadingSession], date: Date) {
 
-            guard let endOfWeek = Date.endOfWeek(from: date) else { return }
-            guard let startOfWeek = Date.startOfWeek(from: date) else { return }
+            guard let endOfWeek = Date.endOfWeek(from: date), 
+            let startOfWeek = Date.startOfWeek(from: date) else { return }
             
             let thisWeekReadingSessions = readingSessions.filter {
                 $0.sessionDate.timeIntervalSince1970 >= startOfWeek.timeIntervalSince1970 &&
@@ -47,16 +47,12 @@ extension StatView {
         }
 
         func generateArrForWeekStat() -> [WeekDayChartElement] {
-            var weekStatArr: [WeekDayChartElement] = []
-            for weekDayNum in 1...7 {
-                weekStatArr.append(
-                    WeekDayChartElement(
-                        amountOfPage: 0,
-                        weekDay: Date.getWeekDayInString(from: weekDayNum)
-                    )
-                )
+            (1...7).map {
+                WeekDayChartElement(
+                    amountOfPage: 0,
+                    weekDay: Date.getWeekDayInString(from: $0)
+                  )
             }
-            return weekStatArr
         }
 
         func getMaxAmountOfPage() -> Int {
