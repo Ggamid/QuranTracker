@@ -10,34 +10,43 @@ import SwiftData
 
 struct SessionsList: View {
     @Query(sort: \QuranReadingSession.sessionDate) var readingSessions: [QuranReadingSession]
-    #if DEBUG
     @Environment(\.modelContext) var modelContext
-    #endif
-    var body: some View {
-        ScrollView {
-            ForEach(readingSessions) { session in
-                SessionsListRow(
-                    date: session.stringDate,
-                    pageAmount: session.pageAmount,
-                    startPage: session.startPage,
-                    endPage: session.endPage
-                )
-            }
-        }
-        #if DEBUG
-        .toolbar {
-            ToolbarItem {
-                Button {
-                    for session in readingSessions {
-                        modelContext.delete(session)
-                    }
-                } label: {
-                    Image(systemName: "trash")
-                }
 
+    @State private var selections = Set<QuranReadingSession>()
+
+    var body: some View {
+        List(readingSessions, selection: $selections) { session in
+            SessionsListRow(
+                date: session.stringDate,
+                pageAmount: session.pageAmount,
+                startPage: session.startPage,
+                endPage: session.endPage
+            )
+            .swipeActions {
+                Button("Delete", systemImage: "trash") {
+                    modelContext.delete(session)
+                }
+                .tint(.red)
+            }
+            .tag(session)
+        }
+        .toolbar {
+            if !selections.isEmpty {
+                ToolbarItem {
+                    Button(role: .destructive) {
+                        for session in selections {
+                            modelContext.delete(session)
+                        }
+                    } label: {
+                        Image(systemName: "trash")
+                            .tint(.red)
+                    }
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                EditButton()
             }
         }
-        #endif
     }
 }
 
