@@ -22,6 +22,7 @@ struct SessionsList: View {
                 startPage: session.startPage,
                 endPage: session.endPage
             )
+            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
             .swipeActions {
                 Button("Delete", systemImage: "trash") {
                     modelContext.delete(session)
