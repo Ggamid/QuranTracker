@@ -14,8 +14,7 @@ struct StatView: View {
 
     @Query(sort: \QuranReadingSession.sessionDate) var readingSessions: [QuranReadingSession]
 
-    @State var date: Date = .now
-    @State var weekDaysArr: [WeekDayChartElement] = []
+    @State var vm = ViewModel()
 
     var body: some View {
         NavigationStack {
@@ -36,13 +35,15 @@ struct StatView: View {
             }
         }
         .onAppear(perform: {
-            getWeekStatArr(from: readingSessions, date: date)
+            vm.getWeekStatArr(from: readingSessions, date: vm.date)
         })
     }
 }
 
 #Preview {
-    StatView()
+
+    return StatView()
+        .modelContainer(PreviewMockSwiftData.previewContainer)
 }
 
 private extension StatView {
@@ -96,59 +97,13 @@ private extension StatView {
         .padding()
     }
 
-    func getWeekStatArr(from readingSessions: [QuranReadingSession], date: Date) {
-
-        let currentWeekDay = Calendar.current.component(.weekday, from: date)
-        let daysInSeconds = Double((currentWeekDay*(60*60*24)))
-
-        let thisWeekReadingSessions = readingSessions.filter {
-            $0.sessionDate.timeIntervalSince1970 >= date.timeIntervalSince1970 - daysInSeconds
-        }
-
-        let weekStatArr: [WeekDayChartElement] = generateArrForWeekStat()
-
-        for weekDayStatIndex in 0..<weekStatArr.count {
-            for readingSessionIndex in 0..<thisWeekReadingSessions.count {
-
-                let readingSession = thisWeekReadingSessions[readingSessionIndex]
-                let weekDayStat = weekStatArr[weekDayStatIndex]
-
-                if weekDayStat.weekDay == readingSession.weekDay {
-                    weekDayStat.amountOfPage += readingSession.pageAmount
-                }
-            }
-        }
-
-        weekDaysArr = weekStatArr
-    }
-
-    func generateArrForWeekStat() -> [WeekDayChartElement] {
-        var weekStatArr: [WeekDayChartElement] = []
-        for weekDayNum in 1...7 {
-            weekStatArr.append(
-                WeekDayChartElement(
-                    amountOfPage: 0,
-                    weekDay: Date.getWeekDayInString(from: weekDayNum)
-                )
-            )
-        }
-        return weekStatArr
-    }
-
-    func getMaxAmountOfPage() -> Int {
-        (weekDaysArr.sorted(by: { $0.amountOfPage < $1.amountOfPage }).last?.amountOfPage ?? 30) + 10
-    }
-
     @ViewBuilder
     var weekChartView: some View {
-        if !weekDaysArr.isEmpty {
-            Text("Недельная статистика чтения")
-                .font(.title2)
-                .fontWeight(.medium)
-            Text("Всего прочтено страниц: \(weekDaysArr.reduce(0, {$0 + $1.amountOfPage}))")
+        if !vm.weekDaysArr.isEmpty {
+            headerOfChartView
 
             Chart {
-                ForEach(weekDaysArr) { weekDayStat in
+                ForEach(vm.weekDaysArr) { weekDayStat in
                     BarMark(
                         x: .value("WeekDay", weekDayStat.weekDay),
                         y: .value("Pages", weekDayStat.amountOfPage)
@@ -160,8 +115,51 @@ private extension StatView {
                 }
             }
             .frame(height: 220)
-            .chartYScale(domain: 0...getMaxAmountOfPage())
+            .chartYScale(domain: 0...vm.getMaxAmountOfPage())
             .padding()
         }
+    }
+
+    @ViewBuilder
+    var headerOfChartView: some View {
+        VStack(alignment: .leading) {
+            Text("Недельная статистика чтения")
+                .font(.title2)
+                .fontWeight(.medium)
+            Text("Всего прочтено страниц: \(vm.weekDaysArr.reduce(0, {$0 + $1.amountOfPage}))")
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading)
+
+        HStack(spacing: 30) {
+
+            Text("\(Date.getStartAndEndOfWeek(from: vm.date))")
+                .font(.title3)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading)
+
+            Button {
+                withAnimation {
+                    vm.decreaseDateAndUpdateChart(with: readingSessions)
+                }
+            } label: {
+                Image(systemName: "chevron.left")
+                    .foregroundStyle(.yellowQT)
+            }
+
+            Button {
+                withAnimation {
+                    vm.increaseDateAndUpdateChart(with: readingSessions)
+                }
+            } label: {
+                 Image(systemName: "chevron.right")
+                    .foregroundStyle(!(vm.isCurrentWeek) ? .yellowQT : .gray.opacity(0.3))
+            }
+            .allowsHitTesting(!(vm.isCurrentWeek))
+            .padding(.trailing)
+
+        }
+        .font(.title)
+        .padding(5)
     }
 }
