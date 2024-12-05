@@ -82,7 +82,7 @@ extension StatView {
             return array
         }
         
-        func getSumOfPage2s(from date: Date) -> Int {
+        func getSumOfPages(from date: Date) -> Int {
             var sum = 0
             for session in currentMonthSessions {
                 if let session {
