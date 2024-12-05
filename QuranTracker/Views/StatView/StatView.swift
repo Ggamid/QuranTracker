@@ -35,7 +35,7 @@ struct StatView: View {
             }
         }
         .onAppear(perform: {
-            vm.getWeekStatArr(from: readingSessions, date: vm.date)
+            vm.getWeekStatArr(from: readingSessions, date: vm.weekChartDate)
         })
     }
 }
@@ -53,6 +53,11 @@ private extension StatView {
         if !readingSessions.isEmpty {
             progressInPages
             weekChartView
+            
+            CalendarView(
+                date: $vm.monthChartDate,
+                readingSessions: vm.getArrayOfCurrentMonthSessions(from: readingSessions)
+            )
         } else {
             Text("Запишите свой первый прогресс чтобы увидеть статистику чтения!")
                 .font(.title3)
@@ -101,7 +106,6 @@ private extension StatView {
     var weekChartView: some View {
         if !vm.weekDaysArr.isEmpty {
             headerOfChartView
-
             Chart {
                 ForEach(vm.weekDaysArr) { weekDayStat in
                     BarMark(
@@ -133,7 +137,7 @@ private extension StatView {
 
         HStack(spacing: 30) {
 
-            Text("\(Date.getStartAndEndOfWeek(from: vm.date))")
+            Text("\(Date.getStartAndEndOfWeek(from: vm.weekChartDate))")
                 .font(.title3)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
@@ -144,7 +148,8 @@ private extension StatView {
                 }
             } label: {
                 Image(systemName: "chevron.left")
-                    .foregroundStyle(.yellowQT)
+                    .foregroundStyle(.additionalYellow)
+                    .bold()
             }
 
             Button {
@@ -153,7 +158,8 @@ private extension StatView {
                 }
             } label: {
                  Image(systemName: "chevron.right")
-                    .foregroundStyle(!(vm.isCurrentWeek) ? .yellowQT : .gray.opacity(0.3))
+                    .foregroundStyle(!(vm.isCurrentWeek) ? .additionalYellow : .gray.opacity(0.3))
+                    .bold()
             }
             .allowsHitTesting(!(vm.isCurrentWeek))
             .padding(.trailing)
