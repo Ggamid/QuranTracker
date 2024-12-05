@@ -24,7 +24,7 @@ struct SessionsListRow: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
             Text("\(pageAmount)")
         }
-        .font(.title)
+        .font(.title2)
         .lineLimit(1)
         .padding()
         .onTapGesture {
