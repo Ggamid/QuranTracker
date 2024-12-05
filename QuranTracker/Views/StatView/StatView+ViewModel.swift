@@ -73,25 +73,21 @@ extension StatView {
     
         func getArrayOfCurrentMonthSessions(from allSessions: [QuranReadingSession]) -> [QuranReadingSession?] {
             var array: [QuranReadingSession?] = Array(repeating: nil, count: weekChartDate.numberOfDaysInMonth)
-            for session in allSessions {
-                if (session.sessionDate.yearInt, session.sessionDate.monthInt) ==
-                    (monthChartDate.yearInt, monthChartDate.monthInt) {
+            for session in allSessions 
+            where (session.sessionDate.yearInt, session.sessionDate.monthInt) ==
+            (monthChartDate.yearInt, monthChartDate.monthInt) {
                     array[session.sessionDate.dayInt] = session
-                }
             }
             return array
         }
         
         func getSumOfPages(from date: Date) -> Int {
-            var sum = 0
-            for session in currentMonthSessions {
-                if let session {
-                    if session.sessionDate == date {
-                        sum += session.pageAmount
-                    }
+            currentMonthSessions.compactMap({$0}).reduce(0) { partialResult, session in
+                if session.sessionDate == date {
+                    return partialResult + session.pageAmount
                 }
+                return partialResult
             }
-            return sum
         }
         
     }
