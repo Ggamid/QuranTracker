@@ -11,11 +11,13 @@ extension StatView {
     @Observable
     final class ViewModel {
         var currentDate: Date = .now
-        var date: Date = .now
+        var weekChartDate: Date = .now
+        var monthChartDate: Date = .now
         var weekDaysArr: [WeekDayChartElement] = []
+        var currentMonthSessions: [QuranReadingSession?] = []
         
         var isCurrentWeek: Bool {
-            currentDate.timeIntervalSince1970 == date.timeIntervalSince1970
+            currentDate.timeIntervalSince1970 == weekChartDate.timeIntervalSince1970
         }
 
         // для получения сессий чтения для текущей недели
@@ -60,13 +62,37 @@ extension StatView {
         }
         
         func increaseDateAndUpdateChart(with readingSessions: [QuranReadingSession]) {
-            date = Date(timeIntervalSince1970: date.timeIntervalSince1970 + Date.weekInSeconds)
-            getWeekStatArr(from: readingSessions, date: date)
+            weekChartDate = Date(timeIntervalSince1970: weekChartDate.timeIntervalSince1970 + Date.weekInSeconds)
+            getWeekStatArr(from: readingSessions, date: weekChartDate)
         }
         
         func decreaseDateAndUpdateChart(with readingSessions: [QuranReadingSession]) {
-            date = Date(timeIntervalSince1970: date.timeIntervalSince1970 - Date.weekInSeconds)
-            getWeekStatArr(from: readingSessions, date: date)
+            weekChartDate = Date(timeIntervalSince1970: weekChartDate.timeIntervalSince1970 - Date.weekInSeconds)
+            getWeekStatArr(from: readingSessions, date: weekChartDate)
         }
+    
+        func getArrayOfCurrentMonthSessions(from allSessions: [QuranReadingSession]) -> [QuranReadingSession?] {
+            var array: [QuranReadingSession?] = Array(repeating: nil, count: weekChartDate.numberOfDaysInMonth)
+            for session in allSessions {
+                if (session.sessionDate.yearInt, session.sessionDate.monthInt) ==
+                    (monthChartDate.yearInt, monthChartDate.monthInt) {
+                    array[session.sessionDate.dayInt] = session
+                }
+            }
+            return array
+        }
+        
+        func getSumOfPage2s(from date: Date) -> Int {
+            var sum = 0
+            for session in currentMonthSessions {
+                if let session {
+                    if session.sessionDate == date {
+                        sum += session.pageAmount
+                    }
+                }
+            }
+            return sum
+        }
+        
     }
 }
