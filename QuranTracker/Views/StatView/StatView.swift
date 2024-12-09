@@ -14,25 +14,51 @@ struct StatView: View {
 
     @Query(sort: \QuranReadingSession.sessionDate) var readingSessions: [QuranReadingSession]
 
-    @State var vm = ViewModel()
+    @State private var vm = ViewModel()
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack {
-                    stats
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink {
-                        SessionsList()
-                    } label: {
-                        Image(systemName: "book.pages")
-                            .foregroundStyle(.orangeQT)
+    
+        ZStack {
+            NavigationStack {
+                ScrollView {
+                    VStack {
+                        stats
                     }
                 }
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        NavigationLink {
+                            SessionsList()
+                        } label: {
+                            Image(systemName: "book.pages")
+                                .foregroundStyle(.orangeQT)
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            withAnimation(.bouncy) {
+                                vm.writeProgressOffset = 0
+                                vm.blurRadius = 7
+                            }
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundStyle(.orangeQT)
+                        }
+                    }
+                }
+                .navigationTitle("QuranTracker ✨")
             }
+            .blur(radius: vm.blurRadius)
+            
+            WriteProgressView {
+                withAnimation {
+                    vm.writeProgressOffset = 1000
+                    vm.blurRadius = 0
+                }
+            }
+            .offset(y: CGFloat(vm.writeProgressOffset))
+            
         }
         .onAppear(perform: {
             vm.getWeekStatArr(from: readingSessions, date: vm.weekChartDate)
