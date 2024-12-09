@@ -17,7 +17,7 @@ extension StatView {
         var currentMonthSessions: [QuranReadingSession?] = []
         
         var isCurrentWeek: Bool {
-            currentDate.timeIntervalSince1970 == weekChartDate.timeIntervalSince1970
+            currentDate.weekInt == weekChartDate.weekInt
         }
 
         // для получения сессий чтения для текущей недели

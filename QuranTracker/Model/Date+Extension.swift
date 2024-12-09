@@ -133,6 +133,10 @@ extension Date {
         Calendar.current.component(.day, from: self)
     }
     
+    var weekInt: Int {
+        Calendar.current.component(.weekOfYear, from: self)
+    }
+    
     var startOfDay: Date {
         Calendar.current.startOfDay(for: self)
     }

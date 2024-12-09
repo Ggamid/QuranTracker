@@ -53,7 +53,7 @@ private extension StatView {
         if !readingSessions.isEmpty {
             progressInPages
             weekChartView
-            
+
             CalendarView(
                 date: $vm.monthChartDate,
                 readingSessions: vm.getArrayOfCurrentMonthSessions(from: readingSessions)
