@@ -15,6 +15,8 @@ extension StatView {
         var monthChartDate: Date = .now
         var weekDaysArr: [WeekDayChartElement] = []
         var currentMonthSessions: [QuranReadingSession?] = []
+        var writeProgressOffset: Int = 0
+        var blurRadius: CGFloat = 7
         
         var isCurrentWeek: Bool {
             currentDate.weekInt == weekChartDate.weekInt
