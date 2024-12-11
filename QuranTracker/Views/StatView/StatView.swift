@@ -55,13 +55,16 @@ struct StatView: View {
                 withAnimation {
                     vm.writeProgressOffset = 1000
                     vm.blurRadius = 0
+                    vm.getWeekStatArr(from: readingSessions)
+                    vm.getArrayOfCurrentMonthSessions(from: readingSessions)
                 }
             }
             .offset(y: CGFloat(vm.writeProgressOffset))
             
         }
         .onAppear(perform: {
-            vm.getWeekStatArr(from: readingSessions, date: vm.weekChartDate)
+            vm.getWeekStatArr(from: readingSessions)
+            vm.getArrayOfCurrentMonthSessions(from: readingSessions)
         })
     }
 }
@@ -82,7 +85,7 @@ private extension StatView {
 
             CalendarView(
                 date: $vm.monthChartDate,
-                readingSessions: vm.getArrayOfCurrentMonthSessions(from: readingSessions)
+                readingSessions: vm.currentMonthSessions
             )
         } else {
             Text("Запишите свой первый прогресс чтобы увидеть статистику чтения!")
