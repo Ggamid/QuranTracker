@@ -60,12 +60,6 @@ struct CalendarView: View {
                 }
             }
             .padding()
-            
-            ScrollView {
-                ForEach(readingSessions.indices, id: \.self) { i in
-                    Text("\(readingSessions[i])")
-                }
-            }
         }
         .onAppear {
             days = date.calendarDisplayDays

@@ -66,6 +66,9 @@ struct StatView: View {
             vm.getWeekStatArr(from: readingSessions)
             vm.getArrayOfCurrentMonthSessions(from: readingSessions)
         })
+        .onChange(of: vm.monthChartDate) {
+            vm.getArrayOfCurrentMonthSessions(from: readingSessions)
+        }
     }
 }
 
