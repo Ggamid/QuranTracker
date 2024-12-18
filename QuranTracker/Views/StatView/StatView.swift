@@ -13,6 +13,7 @@ import Charts
 struct StatView: View {
 
     @Query(sort: \QuranReadingSession.sessionDate) var readingSessions: [QuranReadingSession]
+    @State var updateChart: Bool = false
 
     @State private var vm = ViewModel()
 
@@ -21,14 +22,12 @@ struct StatView: View {
         ZStack {
             NavigationStack {
                 ScrollView {
-                    VStack {
-                        stats
-                    }
+                    stats
                 }
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         NavigationLink {
-                            SessionsList()
+                            SessionsList(updateChart: $updateChart)
                         } label: {
                             Image(systemName: "book.pages")
                                 .foregroundStyle(.orangeQT)
@@ -55,19 +54,20 @@ struct StatView: View {
                 withAnimation {
                     vm.writeProgressOffset = 1000
                     vm.blurRadius = 0
-                    vm.getWeekStatArr(from: readingSessions)
-                    vm.getArrayOfCurrentMonthSessions(from: readingSessions)
+                    updateCharts()
                 }
             }
             .offset(y: CGFloat(vm.writeProgressOffset))
             
         }
         .onAppear(perform: {
-            vm.getWeekStatArr(from: readingSessions)
-            vm.getArrayOfCurrentMonthSessions(from: readingSessions)
+            updateCharts()
         })
         .onChange(of: vm.monthChartDate) {
             vm.getArrayOfCurrentMonthSessions(from: readingSessions)
+        }
+        .onChange(of: updateChart) {
+            updateCharts()
         }
     }
 }
@@ -80,28 +80,29 @@ struct StatView: View {
 
 private extension StatView {
 
-    @ViewBuilder
     var stats: some View {
-        if !readingSessions.isEmpty {
-            progressInPages
-            weekChartView
-
-            CalendarView(
-                date: $vm.monthChartDate,
-                readingSessions: vm.currentMonthSessions
-            )
-        } else {
-            Text("Запишите свой первый прогресс чтобы увидеть статистику чтения!")
-                .font(.title3)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .padding()
-
-            Image(.quranTrackerLogo)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 300)
-                .padding(.vertical, 20)
+        VStack {
+            if !readingSessions.isEmpty {
+                progressInPages
+                weekChartView
+                
+                CalendarView(
+                    date: $vm.monthChartDate,
+                    readingSessions: vm.currentMonthSessions
+                )
+            } else {
+                Text("Запишите свой первый прогресс чтобы увидеть статистику чтения!")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                Image(.quranTrackerLogo)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 300)
+                    .padding(.vertical, 20)
+            }
         }
     }
 
@@ -199,5 +200,10 @@ private extension StatView {
         }
         .font(.title)
         .padding(5)
+    }
+    
+    func updateCharts() {
+        vm.getWeekStatArr(from: readingSessions)
+        vm.getArrayOfCurrentMonthSessions(from: readingSessions)
     }
 }

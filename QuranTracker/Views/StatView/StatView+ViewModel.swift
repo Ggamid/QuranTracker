@@ -77,7 +77,6 @@ extension StatView {
     
         func getArrayOfCurrentMonthSessions(from allSessions: [QuranReadingSession]) {
             var array: [Int?] = Array(repeating: nil, count: weekChartDate.numberOfDaysInMonth)
-            print(allSessions)
             for session in allSessions
             where (session.sessionDate.yearInt, session.sessionDate.monthInt) ==
             (monthChartDate.yearInt, monthChartDate.monthInt) {
@@ -88,7 +87,6 @@ extension StatView {
                 }
             }
             currentMonthSessions = array
-            print(array)
         }
     }
 }
