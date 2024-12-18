@@ -2,5 +2,3 @@ disabled_rules:
  - trailing_whitespace
 identifier_name:
   min_length: 2
-excluded:
-  - Model/DataModels/Hadith.swift
