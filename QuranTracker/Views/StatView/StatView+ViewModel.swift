@@ -13,18 +13,22 @@ extension StatView {
         var currentDate: Date = .now
         var weekChartDate: Date = .now
         var monthChartDate: Date = .now
+        
         var weekDaysArr: [WeekDayChartElement] = []
-        var currentMonthSessions: [QuranReadingSession?] = []
+        var currentMonthSessions: [Int?] = []
+        
+        var writeProgressOffset: Int = 0
+        var blurRadius: CGFloat = 7
         
         var isCurrentWeek: Bool {
             currentDate.weekInt == weekChartDate.weekInt
         }
 
         // для получения сессий чтения для текущей недели
-        func getWeekStatArr(from readingSessions: [QuranReadingSession], date: Date) {
+        func getWeekStatArr(from readingSessions: [QuranReadingSession]) {
 
-            guard let endOfWeek = Date.endOfWeek(from: date), 
-            let startOfWeek = Date.startOfWeek(from: date) else { return }
+            guard let endOfWeek = Date.endOfWeek(from: weekChartDate),
+            let startOfWeek = Date.startOfWeek(from: weekChartDate) else { return }
             
             let thisWeekReadingSessions = readingSessions.filter {
                 $0.sessionDate.timeIntervalSince1970 >= startOfWeek.timeIntervalSince1970 &&
@@ -63,32 +67,26 @@ extension StatView {
         
         func increaseDateAndUpdateChart(with readingSessions: [QuranReadingSession]) {
             weekChartDate = Date(timeIntervalSince1970: weekChartDate.timeIntervalSince1970 + Date.weekInSeconds)
-            getWeekStatArr(from: readingSessions, date: weekChartDate)
+            getWeekStatArr(from: readingSessions)
         }
         
         func decreaseDateAndUpdateChart(with readingSessions: [QuranReadingSession]) {
             weekChartDate = Date(timeIntervalSince1970: weekChartDate.timeIntervalSince1970 - Date.weekInSeconds)
-            getWeekStatArr(from: readingSessions, date: weekChartDate)
+            getWeekStatArr(from: readingSessions)
         }
     
-        func getArrayOfCurrentMonthSessions(from allSessions: [QuranReadingSession]) -> [QuranReadingSession?] {
-            var array: [QuranReadingSession?] = Array(repeating: nil, count: weekChartDate.numberOfDaysInMonth)
-            for session in allSessions 
+        func getArrayOfCurrentMonthSessions(from allSessions: [QuranReadingSession]) {
+            var array: [Int?] = Array(repeating: nil, count: weekChartDate.numberOfDaysInMonth)
+            for session in allSessions
             where (session.sessionDate.yearInt, session.sessionDate.monthInt) ==
             (monthChartDate.yearInt, monthChartDate.monthInt) {
-                    array[session.sessionDate.dayInt] = session
-            }
-            return array
-        }
-        
-        func getSumOfPages(from date: Date) -> Int {
-            currentMonthSessions.compactMap({$0}).reduce(0) { partialResult, session in
-                if session.sessionDate == date {
-                    return partialResult + session.pageAmount
+                if array[session.sessionDate.dayInt-1] != nil {
+                    array[session.sessionDate.dayInt-1]! += session.pageAmount
+                } else {
+                    array[session.sessionDate.dayInt-1] = session.pageAmount
                 }
-                return partialResult
             }
+            currentMonthSessions = array
         }
-        
     }
 }
