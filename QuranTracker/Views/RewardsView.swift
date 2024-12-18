@@ -19,7 +19,7 @@ struct RewardsView: View {
                 .multilineTextAlignment(.leading)
                 .font(isSmallHeader ? .title3 : .title)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 10)
+                .padding()
                 .foregroundStyle(.black)
             
             ScrollView {
@@ -29,7 +29,8 @@ struct RewardsView: View {
                         label: hadith.label,
                         text: hadith.text,
                         author: hadith.author,
-                        source: hadith.source
+                        source: hadith.source,
+                        additionalInfo: hadith.additionalInfo
                     )
                 }
             }
@@ -48,6 +49,7 @@ private extension RewardsView {
         let text: String
         let author: String
         let source: String
+        let additionalInfo: String?
         
         var body: some View {
             VStack {
@@ -79,6 +81,60 @@ private extension RewardsView {
                                 Text("“\(text)“")
                                     .font(.title3)
                                 Text(source)
+                                
+                                if let additionalInfo {
+                                    AdditionalInfo(
+                                        label: "Дополнительная информация",
+                                        text: additionalInfo
+                                    )
+                                }
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(4)
+                        }
+                        .padding()
+                        .transition(.asymmetric(insertion: .move(edge: .top), removal: .move(edge: .top)))
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .clipped()
+            }
+        }
+    }
+    
+    struct AdditionalInfo: View {
+        @State private var isExpanded = false
+        let label: String
+        let text: String
+        
+        var body: some View {
+            VStack {
+                HStack {
+                    Text(label)
+                        .font(.subheadline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Image(systemName: "chevron.down")
+                        .font(.caption)
+                        .bold()
+                        .foregroundStyle(Color.orange)
+                        .rotationEffect(!isExpanded ? .zero : Angle(degrees: -180))
+                        .padding(7)
+                        .onTapGesture {
+                            withAnimation {
+                                isExpanded.toggle()
+                            }
+                        }
+                }
+                .padding()
+                
+                VStack {
+                    if isExpanded {
+                        VStack {
+                            Group {
+                                Text("“\(text)“")
+                                    .font(.system(size: 14))
+                                    
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(4)
