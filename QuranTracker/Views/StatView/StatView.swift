@@ -36,6 +36,8 @@ struct StatView: View {
         }
         .onAppear(perform: {
             vm.getWeekStatArr(from: readingSessions, date: vm.weekChartDate)
+            NotificationManager.shared.requestAuthorization()
+            NotificationManager.shared.scheduleNotification()
         })
     }
 }
