@@ -7,9 +7,10 @@
 
 import SwiftUI
 import SwiftfulUI
+import FirebaseFirestore
 
 struct RewardsView: View {
-
+    @FirestoreQuery(collectionPath: "Hadiths") var hadiths: [Hadith]
     @State var isSmallHeader = false
     var body: some View {
         VStack {
@@ -24,7 +25,7 @@ struct RewardsView: View {
             
             ScrollView {
                 
-                ForEach(Hadith.hadiths, id: \.text) { hadith in
+                ForEach(hadiths, id: \.text) { hadith in
                     ExpandableView(
                         label: hadith.label,
                         text: hadith.text,
