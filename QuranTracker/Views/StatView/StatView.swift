@@ -61,7 +61,10 @@ struct StatView: View {
             
         }
         .onAppear(perform: {
+            NotificationManager.shared.requestAuthorization()
+            NotificationManager.shared.scheduleNotification()
             updateCharts()
+
         })
         .onChange(of: vm.monthChartDate) {
             vm.getArrayOfCurrentMonthSessions(from: readingSessions)
