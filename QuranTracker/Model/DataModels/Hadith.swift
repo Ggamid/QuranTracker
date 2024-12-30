@@ -15,9 +15,3 @@ struct Hadith: Codable {
     let additionalInfo: String?
     let tags: [String]?
 }
-
-enum Tags: String {
-    case fromCompanion
-    case fromMessanger
-    case fromScholar
-}

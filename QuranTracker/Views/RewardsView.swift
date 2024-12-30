@@ -15,26 +15,9 @@ struct RewardsView: View {
     var body: some View {
         VStack {
             
-            Text("Хадисы о достоинстве Корана и его чтении 📖")
-                .bold()
-                .multilineTextAlignment(.leading)
-                .font(isSmallHeader ? .title3 : .title)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-                .foregroundStyle(.black)
+            header
             
-            ScrollView {
-                
-                ForEach(hadiths, id: \.text) { hadith in
-                    ExpandableView(
-                        label: hadith.label,
-                        text: hadith.text,
-                        author: hadith.author,
-                        source: hadith.source,
-                        additionalInfo: hadith.additionalInfo
-                    )
-                }
-            }
+            listWithRewards
         }
     }
 }
@@ -44,6 +27,32 @@ struct RewardsView: View {
 }
 
 private extension RewardsView {
+    
+    var header: some View {
+        Text("Хадисы о достоинстве Корана и его чтении 📖")
+            .bold()
+            .multilineTextAlignment(.leading)
+            .font(isSmallHeader ? .title3 : .title)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            .foregroundStyle(.black)
+    }
+    
+    var listWithRewards: some View {
+        ScrollView {
+            
+            ForEach(hadiths, id: \.text) { hadith in
+                ExpandableView(
+                    label: hadith.label,
+                    text: hadith.text,
+                    author: hadith.author,
+                    source: hadith.source,
+                    additionalInfo: hadith.additionalInfo
+                )
+            }
+        }
+    }
+    
     struct ExpandableView: View {
         @State private var isExpanded = false
         let label: String
@@ -83,12 +92,7 @@ private extension RewardsView {
                                     .font(.title3)
                                 Text(source)
                                 
-                                if let additionalInfo {
-                                    AdditionalInfo(
-                                        label: "Дополнительная информация",
-                                        text: additionalInfo
-                                    )
-                                }
+                                additionalInfoIfNeeded()
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(4)
@@ -99,6 +103,16 @@ private extension RewardsView {
                 }
                 .frame(maxWidth: .infinity)
                 .clipped()
+            }
+        }
+        
+        @ViewBuilder
+        func additionalInfoIfNeeded() -> some View {
+            if let additionalInfo {
+                AdditionalInfo(
+                    label: "Дополнительная информация",
+                    text: additionalInfo
+                )
             }
         }
     }
