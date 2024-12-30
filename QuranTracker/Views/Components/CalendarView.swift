@@ -10,7 +10,7 @@ import SwiftUI
 struct CalendarView: View {
     @Binding var date: Date
     let currentDate = Date.now
-    let readingSessions: [QuranReadingSession?]
+    let readingSessions: [Int?]
     
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
     
@@ -46,12 +46,12 @@ struct CalendarView: View {
                                     )
                             )
                             .overlay(alignment: .bottomTrailing) {
-                                if getSumOfPages(from: day) != 0 {
+                                if let sumOfReadedPages = readingSessions[day.dayInt-1] {
                                     Circle()
                                         .frame(height: 17)
                                         .foregroundStyle(.green)
                                         .overlay {
-                                            Text("\(getSumOfPages(from: day))")
+                                            Text("\(sumOfReadedPages)")
                                                 .font(.caption2)
                                         }
                                 }
@@ -69,14 +69,11 @@ struct CalendarView: View {
         }
     }
     
-    func getSumOfPages(from date: Date) -> Int {
-        let sessions = readingSessions.compactMap({$0})
-        var sum = 0
-        for session in sessions where session.sessionDate.dayInt == date.dayInt {
-            sum += session.pageAmount
-        }
-        return sum
-    }
+//    func getSumOfPages(from date: Date) -> Int {
+//        readingSessions.compactMap({$0}).filter { quranReadingSession in
+//            quranReadingSession.sessionDate.dayInt == date.dayInt
+//        }.reduce(0) { $0 + $1.pageAmount }
+//    }
     
     func increaseDateAndUpdateMonthChart() {
         date = Date(

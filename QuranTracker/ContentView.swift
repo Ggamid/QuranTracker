@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HomeView()
+        TabView {
+            StatView()
+                .tabItem { Image(systemName: "chart.xyaxis.line") }
+            RewardsView()
+                .tabItem { Image(systemName: "medal") }
+        }
     }
 }
 

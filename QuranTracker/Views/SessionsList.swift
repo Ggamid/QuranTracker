@@ -11,6 +11,7 @@ import SwiftData
 struct SessionsList: View {
     @Query(sort: \QuranReadingSession.sessionDate) var readingSessions: [QuranReadingSession]
     @Environment(\.modelContext) var modelContext
+    @Binding var updateChart: Bool
 
     @State private var selections = Set<QuranReadingSession>()
 
@@ -26,6 +27,7 @@ struct SessionsList: View {
             .swipeActions {
                 Button("Delete", systemImage: "trash") {
                     modelContext.delete(session)
+                    updateChart.toggle()
                 }
                 .tint(.red)
             }
@@ -37,6 +39,7 @@ struct SessionsList: View {
                     Button(role: .destructive) {
                         for session in selections {
                             modelContext.delete(session)
+                            updateChart.toggle()
                         }
                     } label: {
                         Image(systemName: "trash")
@@ -52,5 +55,5 @@ struct SessionsList: View {
 }
 
 #Preview {
-    SessionsList()
+    SessionsList(updateChart: .constant(false))
 }
