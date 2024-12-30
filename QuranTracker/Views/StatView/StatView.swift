@@ -13,32 +13,65 @@ import Charts
 struct StatView: View {
 
     @Query(sort: \QuranReadingSession.sessionDate) var readingSessions: [QuranReadingSession]
+    @State var updateChart: Bool = false
 
-    @State var vm = ViewModel()
+    @State private var vm = ViewModel()
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack {
+    
+        ZStack {
+            NavigationStack {
+                ScrollView {
                     stats
                 }
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink {
-                        SessionsList()
-                    } label: {
-                        Image(systemName: "book.pages")
-                            .foregroundStyle(.orangeQT)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        NavigationLink {
+                            SessionsList(updateChart: $updateChart)
+                        } label: {
+                            Image(systemName: "book.pages")
+                                .foregroundStyle(.orangeQT)
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            withAnimation(.bouncy) {
+                                vm.writeProgressOffset = 0
+                                vm.blurRadius = 7
+                            }
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundStyle(.orangeQT)
+                        }
                     }
                 }
+                .navigationTitle("QuranTracker ✨")
             }
+            .blur(radius: vm.blurRadius)
+            
+            WriteProgressView {
+                withAnimation {
+                    vm.writeProgressOffset = 1000
+                    vm.blurRadius = 0
+                    updateCharts()
+                }
+            }
+            .offset(y: CGFloat(vm.writeProgressOffset))
+            
         }
         .onAppear(perform: {
-            vm.getWeekStatArr(from: readingSessions, date: vm.weekChartDate)
             NotificationManager.shared.requestAuthorization()
             NotificationManager.shared.scheduleNotification()
+            updateCharts()
+
         })
+        .onChange(of: vm.monthChartDate) {
+            vm.getArrayOfCurrentMonthSessions(from: readingSessions)
+        }
+        .onChange(of: updateChart) {
+            updateCharts()
+        }
     }
 }
 
@@ -50,28 +83,29 @@ struct StatView: View {
 
 private extension StatView {
 
-    @ViewBuilder
     var stats: some View {
-        if !readingSessions.isEmpty {
-            progressInPages
-            weekChartView
-
-            CalendarView(
-                date: $vm.monthChartDate,
-                readingSessions: vm.getArrayOfCurrentMonthSessions(from: readingSessions)
-            )
-        } else {
-            Text("Запишите свой первый прогресс чтобы увидеть статистику чтения!")
-                .font(.title3)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .padding()
-
-            Image(.quranTrackerLogo)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 300)
-                .padding(.vertical, 20)
+        VStack {
+            if !readingSessions.isEmpty {
+                progressInPages
+                weekChartView
+                
+                CalendarView(
+                    date: $vm.monthChartDate,
+                    readingSessions: vm.currentMonthSessions
+                )
+            } else {
+                Text("Запишите свой первый прогресс чтобы увидеть статистику чтения!")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                Image(.quranTrackerLogo)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 300)
+                    .padding(.vertical, 20)
+            }
         }
     }
 
@@ -169,5 +203,10 @@ private extension StatView {
         }
         .font(.title)
         .padding(5)
+    }
+    
+    func updateCharts() {
+        vm.getWeekStatArr(from: readingSessions)
+        vm.getArrayOfCurrentMonthSessions(from: readingSessions)
     }
 }
