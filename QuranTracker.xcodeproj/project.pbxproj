@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		871C7F282D0203BB003EC594 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C7F272D0203BB003EC594 /* CalendarView.swift */; };
 		872C2A062CEF1FBB00B06A11 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C2A052CEF1FBB00B06A11 /* Date+Extension.swift */; };
+		8737EF842D1335E600D4939E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8737EF832D1335E600D4939E /* GoogleService-Info.plist */; };
+		8737EF872D1337A600D4939E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8737EF862D1337A600D4939E /* FirebaseDatabase */; };
+		8737EF892D1337A600D4939E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8737EF882D1337A600D4939E /* FirebaseFirestore */; };
 		8748482A2CEE4D1D00919F1F /* WeekDayChartElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874848292CEE4D1D00919F1F /* WeekDayChartElement.swift */; };
 		8768329E2CE3835F000575D5 /* QuranData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8768329D2CE3835F000575D5 /* QuranData.swift */; };
 		8770CC7B2CF3276C0032185B /* PreviewMockSwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770CC7A2CF3276C0032185B /* PreviewMockSwiftData.swift */; };
@@ -39,12 +42,14 @@
 /* Begin PBXFileReference section */
 		871C7F272D0203BB003EC594 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		872C2A052CEF1FBB00B06A11 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		8737EF832D1335E600D4939E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		874848292CEE4D1D00919F1F /* WeekDayChartElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayChartElement.swift; sourceTree = "<group>"; };
 		8768329D2CE3835F000575D5 /* QuranData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranData.swift; sourceTree = "<group>"; };
 		8770CC7A2CF3276C0032185B /* PreviewMockSwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMockSwiftData.swift; sourceTree = "<group>"; };
 		8770CC7D2CF357990032185B /* StatView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatView+ViewModel.swift"; sourceTree = "<group>"; };
 		878ACA252CE39A550022D1DB /* QuranPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranPage.swift; sourceTree = "<group>"; };
 		878ACA272CE39A7D0022D1DB /* FetchingDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingDataError.swift; sourceTree = "<group>"; };
+		87B7CCDF2D232D8300F79A0A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		87BA9A8A2D07616C002D128A /* RewardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsView.swift; sourceTree = "<group>"; };
 		87BA9A8C2D0761FA002D128A /* Hadith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hadith.swift; sourceTree = "<group>"; };
 		87C08F8E2CE9F10B00944937 /* QuranReadingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranReadingSession.swift; sourceTree = "<group>"; };
@@ -70,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8737EF872D1337A600D4939E /* FirebaseDatabase in Frameworks */,
+				8737EF892D1337A600D4939E /* FirebaseFirestore in Frameworks */,
 				87D699812CE11785007FA1DD /* SwiftfulUI in Frameworks */,
 				87D6997E2CE1087B007FA1DD /* Vortex in Frameworks */,
 			);
@@ -120,6 +127,7 @@
 		87D699572CE0D5CE007FA1DD = {
 			isa = PBXGroup;
 			children = (
+				87B7CCDF2D232D8300F79A0A /* .gitignore */,
 				87D699622CE0D5CE007FA1DD /* QuranTracker */,
 				87D699612CE0D5CE007FA1DD /* Products */,
 			);
@@ -141,6 +149,7 @@
 				87D699712CE0DD97007FA1DD /* Model */,
 				87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */,
 				87D699652CE0D5CE007FA1DD /* ContentView.swift */,
+				8737EF832D1335E600D4939E /* GoogleService-Info.plist */,
 				87D699672CE0D5CF007FA1DD /* Assets.xcassets */,
 				87D699692CE0D5CF007FA1DD /* Preview Content */,
 			);
@@ -210,6 +219,8 @@
 			packageProductDependencies = (
 				87D6997D2CE1087B007FA1DD /* Vortex */,
 				87D699802CE11785007FA1DD /* SwiftfulUI */,
+				8737EF862D1337A600D4939E /* FirebaseDatabase */,
+				8737EF882D1337A600D4939E /* FirebaseFirestore */,
 			);
 			productName = QuranTracker;
 			productReference = 87D699602CE0D5CE007FA1DD /* QuranTracker.app */;
@@ -243,6 +254,7 @@
 				87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */,
 				87D6997F2CE11785007FA1DD /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
 				871A18522CE6421200C22A36 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+				8737EF852D1337A600D4939E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 87D699612CE0D5CE007FA1DD /* Products */;
 			projectDirPath = "";
@@ -259,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D6996B2CE0D5CF007FA1DD /* Preview Assets.xcassets in Resources */,
+				8737EF842D1335E600D4939E /* GoogleService-Info.plist in Resources */,
 				87D699682CE0D5CF007FA1DD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +530,14 @@
 				minimumVersion = 0.57.0;
 			};
 		};
+		8737EF852D1337A600D4939E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
 		87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/Vortex";
@@ -540,6 +561,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 871A18522CE6421200C22A36 /* XCRemoteSwiftPackageReference "SwiftLint" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		8737EF862D1337A600D4939E /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8737EF852D1337A600D4939E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		8737EF882D1337A600D4939E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8737EF852D1337A600D4939E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		87D6997D2CE1087B007FA1DD /* Vortex */ = {
 			isa = XCSwiftPackageProductDependency;
