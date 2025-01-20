@@ -16,7 +16,6 @@ struct RewardsView: View {
         VStack {
             
             header
-            
             listWithRewards
         }
     }
