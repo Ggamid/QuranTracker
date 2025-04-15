@@ -22,7 +22,7 @@ struct RewardsView: View {
     }
 }
 
-#Preview {
+#Preview { 
     RewardsView()
 }
 
