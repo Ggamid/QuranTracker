@@ -8,18 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		871C7F282D0203BB003EC594 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C7F272D0203BB003EC594 /* CalendarView.swift */; };
-		8728762F2DAE9C57000FD3A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8728762E2DAE9C57000FD3A0 /* GoogleService-Info.plist */; };
 		872C2A062CEF1FBB00B06A11 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C2A052CEF1FBB00B06A11 /* Date+Extension.swift */; };
 		8737EF842D1335E600D4939E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8737EF832D1335E600D4939E /* GoogleService-Info.plist */; };
+		8737EF872D1337A600D4939E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8737EF862D1337A600D4939E /* FirebaseDatabase */; };
+		8737EF892D1337A600D4939E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8737EF882D1337A600D4939E /* FirebaseFirestore */; };
 		8748482A2CEE4D1D00919F1F /* WeekDayChartElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874848292CEE4D1D00919F1F /* WeekDayChartElement.swift */; };
+		87517FD42DAEECCE00C0CC5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87517FD32DAEECCE00C0CC5E /* GoogleService-Info.plist */; };
 		8768329E2CE3835F000575D5 /* QuranData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8768329D2CE3835F000575D5 /* QuranData.swift */; };
 		8770CC7B2CF3276C0032185B /* PreviewMockSwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770CC7A2CF3276C0032185B /* PreviewMockSwiftData.swift */; };
 		8770CC7E2CF357990032185B /* StatView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770CC7D2CF357990032185B /* StatView+ViewModel.swift */; };
-		877DF34F2DAEAF35007AF430 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 877DF34E2DAEAF35007AF430 /* FirebaseCore */; };
-		877DF3512DAEAF35007AF430 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 877DF3502DAEAF35007AF430 /* FirebaseDatabase */; };
-		877DF3532DAEAF35007AF430 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 877DF3522DAEAF35007AF430 /* FirebaseFirestore */; };
-		8787ED502DAED780002B1B62 /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = 8787ED4F2DAED780002B1B62 /* Vortex */; };
-		8787ED532DAED79C002B1B62 /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8787ED522DAED79C002B1B62 /* SwiftfulUI */; };
 		878ACA262CE39A550022D1DB /* QuranPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878ACA252CE39A550022D1DB /* QuranPage.swift */; };
 		878ACA282CE39A7D0022D1DB /* FetchingDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878ACA272CE39A7D0022D1DB /* FetchingDataError.swift */; };
 		87BA9A8B2D07616C002D128A /* RewardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BA9A8A2D07616C002D128A /* RewardsView.swift */; };
@@ -39,14 +36,16 @@
 		87D699772CE0E008007FA1DD /* Particles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699762CE0E008007FA1DD /* Particles.swift */; };
 		87D699792CE0E385007FA1DD /* ButtonQT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D699782CE0E385007FA1DD /* ButtonQT.swift */; };
 		87D6997B2CE0E9F4007FA1DD /* WriteProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6997A2CE0E9F4007FA1DD /* WriteProgressView.swift */; };
+		87D6997E2CE1087B007FA1DD /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = 87D6997D2CE1087B007FA1DD /* Vortex */; };
+		87D699812CE11785007FA1DD /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 87D699802CE11785007FA1DD /* SwiftfulUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		871C7F272D0203BB003EC594 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		8728762E2DAE9C57000FD3A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		872C2A052CEF1FBB00B06A11 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8737EF832D1335E600D4939E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		874848292CEE4D1D00919F1F /* WeekDayChartElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayChartElement.swift; sourceTree = "<group>"; };
+		87517FD32DAEECCE00C0CC5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8768329D2CE3835F000575D5 /* QuranData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranData.swift; sourceTree = "<group>"; };
 		8770CC7A2CF3276C0032185B /* PreviewMockSwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMockSwiftData.swift; sourceTree = "<group>"; };
 		8770CC7D2CF357990032185B /* StatView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatView+ViewModel.swift"; sourceTree = "<group>"; };
@@ -78,11 +77,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				877DF3512DAEAF35007AF430 /* FirebaseDatabase in Frameworks */,
-				877DF34F2DAEAF35007AF430 /* FirebaseCore in Frameworks */,
-				8787ED502DAED780002B1B62 /* Vortex in Frameworks */,
-				8787ED532DAED79C002B1B62 /* SwiftfulUI in Frameworks */,
-				877DF3532DAEAF35007AF430 /* FirebaseFirestore in Frameworks */,
+				8737EF872D1337A600D4939E /* FirebaseDatabase in Frameworks */,
+				8737EF892D1337A600D4939E /* FirebaseFirestore in Frameworks */,
+				87D699812CE11785007FA1DD /* SwiftfulUI in Frameworks */,
+				87D6997E2CE1087B007FA1DD /* Vortex in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,13 +109,6 @@
 			path = DataModels;
 			sourceTree = "<group>";
 		};
-		879908332DAE9F2100B8C7DE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		87C08F902CE9FB6500944937 /* WriteProgress */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +131,6 @@
 			children = (
 				87B7CCDF2D232D8300F79A0A /* .gitignore */,
 				87D699622CE0D5CE007FA1DD /* QuranTracker */,
-				879908332DAE9F2100B8C7DE /* Frameworks */,
 				87D699612CE0D5CE007FA1DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -160,9 +150,9 @@
 				87D699732CE0DE6D007FA1DD /* Views */,
 				87D699712CE0DD97007FA1DD /* Model */,
 				87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */,
+				87517FD32DAEECCE00C0CC5E /* GoogleService-Info.plist */,
 				87D699652CE0D5CE007FA1DD /* ContentView.swift */,
 				8737EF832D1335E600D4939E /* GoogleService-Info.plist */,
-				8728762E2DAE9C57000FD3A0 /* GoogleService-Info.plist */,
 				87D699672CE0D5CF007FA1DD /* Assets.xcassets */,
 				87D699692CE0D5CF007FA1DD /* Preview Content */,
 			);
@@ -226,14 +216,14 @@
 			buildRules = (
 			);
 			dependencies = (
+				870785DB2DAFBBC5004B6E89 /* PBXTargetDependency */,
 			);
 			name = QuranTracker;
 			packageProductDependencies = (
-				877DF34E2DAEAF35007AF430 /* FirebaseCore */,
-				877DF3502DAEAF35007AF430 /* FirebaseDatabase */,
-				877DF3522DAEAF35007AF430 /* FirebaseFirestore */,
-				8787ED4F2DAED780002B1B62 /* Vortex */,
-				8787ED522DAED79C002B1B62 /* SwiftfulUI */,
+				87D6997D2CE1087B007FA1DD /* Vortex */,
+				87D699802CE11785007FA1DD /* SwiftfulUI */,
+				8737EF862D1337A600D4939E /* FirebaseDatabase */,
+				8737EF882D1337A600D4939E /* FirebaseFirestore */,
 			);
 			productName = QuranTracker;
 			productReference = 87D699602CE0D5CE007FA1DD /* QuranTracker.app */;
@@ -264,9 +254,10 @@
 			);
 			mainGroup = 87D699572CE0D5CE007FA1DD;
 			packageReferences = (
-				877DF34D2DAEAF35007AF430 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				8787ED4E2DAED780002B1B62 /* XCRemoteSwiftPackageReference "Vortex" */,
-				8787ED512DAED79C002B1B62 /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
+				87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */,
+				87D6997F2CE11785007FA1DD /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
+				8737EF852D1337A600D4939E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				870785D92DAFBBB3004B6E89 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = 87D699612CE0D5CE007FA1DD /* Products */;
 			projectDirPath = "";
@@ -283,7 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D6996B2CE0D5CF007FA1DD /* Preview Assets.xcassets in Resources */,
-				8728762F2DAE9C57000FD3A0 /* GoogleService-Info.plist in Resources */,
+				87517FD42DAEECCE00C0CC5E /* GoogleService-Info.plist in Resources */,
 				8737EF842D1335E600D4939E /* GoogleService-Info.plist in Resources */,
 				87D699682CE0D5CF007FA1DD /* Assets.xcassets in Resources */,
 			);
@@ -323,6 +314,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		870785DB2DAFBBC5004B6E89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 870785DA2DAFBBC5004B6E89 /* SwiftLintBuildToolPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		87D6996C2CE0D5CF007FA1DD /* Debug */ = {
@@ -468,6 +466,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Gamid-Khalidov.QuranTracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -498,6 +500,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Gamid-Khalidov.QuranTracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -528,23 +534,31 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		877DF34D2DAEAF35007AF430 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		870785D92DAFBBB3004B6E89 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.59.1;
+			};
+		};
+		8737EF852D1337A600D4939E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 11.11.0;
+				minimumVersion = 11.6.0;
 			};
 		};
-		8787ED4E2DAED780002B1B62 /* XCRemoteSwiftPackageReference "Vortex" */ = {
+		87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/Vortex";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
+				minimumVersion = 1.0.1;
 			};
 		};
-		8787ED512DAED79C002B1B62 /* XCRemoteSwiftPackageReference "SwiftfulUI" */ = {
+		87D6997F2CE11785007FA1DD /* XCRemoteSwiftPackageReference "SwiftfulUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulUI.git";
 			requirement = {
@@ -555,29 +569,29 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		877DF34E2DAEAF35007AF430 /* FirebaseCore */ = {
+		870785DA2DAFBBC5004B6E89 /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 877DF34D2DAEAF35007AF430 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCore;
+			package = 870785D92DAFBBB3004B6E89 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
-		877DF3502DAEAF35007AF430 /* FirebaseDatabase */ = {
+		8737EF862D1337A600D4939E /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 877DF34D2DAEAF35007AF430 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 8737EF852D1337A600D4939E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
 		};
-		877DF3522DAEAF35007AF430 /* FirebaseFirestore */ = {
+		8737EF882D1337A600D4939E /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 877DF34D2DAEAF35007AF430 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 8737EF852D1337A600D4939E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		8787ED4F2DAED780002B1B62 /* Vortex */ = {
+		87D6997D2CE1087B007FA1DD /* Vortex */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8787ED4E2DAED780002B1B62 /* XCRemoteSwiftPackageReference "Vortex" */;
+			package = 87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */;
 			productName = Vortex;
 		};
-		8787ED522DAED79C002B1B62 /* SwiftfulUI */ = {
+		87D699802CE11785007FA1DD /* SwiftfulUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8787ED512DAED79C002B1B62 /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
+			package = 87D6997F2CE11785007FA1DD /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
 			productName = SwiftfulUI;
 		};
 /* End XCSwiftPackageProductDependency section */

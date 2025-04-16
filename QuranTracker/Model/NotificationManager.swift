@@ -22,15 +22,15 @@ class NotificationManager {
         content.sound = .default
         
         var dateComponents = DateComponents()
-        dateComponents.hour = 15
-        
+        dateComponents.hour = 12
+
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "1", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request)
     }
     
-    func cnacelNotification() {
+    func cancelNotification() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     }

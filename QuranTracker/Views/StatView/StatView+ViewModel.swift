@@ -74,24 +74,18 @@ extension StatView {
             weekChartDate = Date(timeIntervalSince1970: weekChartDate.timeIntervalSince1970 - Date.weekInSeconds)
             getWeekStatArr(from: readingSessions)
         }
-    
+        
         func getArrayOfCurrentMonthSessions(from allSessions: [QuranReadingSession]) {
-            var dict: [Int: Int] = [:]
-
-            for session in allSessions where
-                (session.sessionDate.yearInt, session.sessionDate.monthInt) ==
-                (monthChartDate.yearInt, monthChartDate.monthInt) {
-                
-                // Используем `default` для упрощения
-                dict[session.sessionDate.dayInt, default: 0] += session.pageAmount
+            var array: [Int?] = Array(repeating: nil, count: weekChartDate.numberOfDaysInMonth)
+            for session in allSessions
+            where (session.sessionDate.yearInt, session.sessionDate.monthInt) ==
+            (monthChartDate.yearInt, monthChartDate.monthInt) {
+                if array[session.sessionDate.dayInt-1] != nil {
+                    array[session.sessionDate.dayInt-1]! += session.pageAmount
+                } else {
+                    array[session.sessionDate.dayInt-1] = session.pageAmount
+                }
             }
-
-            // Преобразуем словарь в массив
-            var array = Array(repeating: nil as Int?, count: monthChartDate.numberOfDaysInMonth)
-            for (day, totalPages) in dict {
-                array[day - 1] = totalPages
-            }
-
             currentMonthSessions = array
         }
     }
