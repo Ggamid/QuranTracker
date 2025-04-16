@@ -13,6 +13,7 @@
 		8737EF872D1337A600D4939E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8737EF862D1337A600D4939E /* FirebaseDatabase */; };
 		8737EF892D1337A600D4939E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8737EF882D1337A600D4939E /* FirebaseFirestore */; };
 		8748482A2CEE4D1D00919F1F /* WeekDayChartElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874848292CEE4D1D00919F1F /* WeekDayChartElement.swift */; };
+		87517FD42DAEECCE00C0CC5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87517FD32DAEECCE00C0CC5E /* GoogleService-Info.plist */; };
 		8768329E2CE3835F000575D5 /* QuranData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8768329D2CE3835F000575D5 /* QuranData.swift */; };
 		8770CC7B2CF3276C0032185B /* PreviewMockSwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770CC7A2CF3276C0032185B /* PreviewMockSwiftData.swift */; };
 		8770CC7E2CF357990032185B /* StatView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770CC7D2CF357990032185B /* StatView+ViewModel.swift */; };
@@ -44,6 +45,7 @@
 		872C2A052CEF1FBB00B06A11 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8737EF832D1335E600D4939E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		874848292CEE4D1D00919F1F /* WeekDayChartElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayChartElement.swift; sourceTree = "<group>"; };
+		87517FD32DAEECCE00C0CC5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8768329D2CE3835F000575D5 /* QuranData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranData.swift; sourceTree = "<group>"; };
 		8770CC7A2CF3276C0032185B /* PreviewMockSwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMockSwiftData.swift; sourceTree = "<group>"; };
 		8770CC7D2CF357990032185B /* StatView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatView+ViewModel.swift"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				87D699732CE0DE6D007FA1DD /* Views */,
 				87D699712CE0DD97007FA1DD /* Model */,
 				87D699632CE0D5CE007FA1DD /* QuranTrackerApp.swift */,
+				87517FD32DAEECCE00C0CC5E /* GoogleService-Info.plist */,
 				87D699652CE0D5CE007FA1DD /* ContentView.swift */,
 				8737EF832D1335E600D4939E /* GoogleService-Info.plist */,
 				87D699672CE0D5CF007FA1DD /* Assets.xcassets */,
@@ -213,7 +216,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				871A18562CE6422700C22A36 /* PBXTargetDependency */,
+				870785DB2DAFBBC5004B6E89 /* PBXTargetDependency */,
 			);
 			name = QuranTracker;
 			packageProductDependencies = (
@@ -253,8 +256,8 @@
 			packageReferences = (
 				87D6997C2CE1087B007FA1DD /* XCRemoteSwiftPackageReference "Vortex" */,
 				87D6997F2CE11785007FA1DD /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
-				871A18522CE6421200C22A36 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				8737EF852D1337A600D4939E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				870785D92DAFBBB3004B6E89 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = 87D699612CE0D5CE007FA1DD /* Products */;
 			projectDirPath = "";
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D6996B2CE0D5CF007FA1DD /* Preview Assets.xcassets in Resources */,
+				87517FD42DAEECCE00C0CC5E /* GoogleService-Info.plist in Resources */,
 				8737EF842D1335E600D4939E /* GoogleService-Info.plist in Resources */,
 				87D699682CE0D5CF007FA1DD /* Assets.xcassets in Resources */,
 			);
@@ -312,9 +316,9 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		871A18562CE6422700C22A36 /* PBXTargetDependency */ = {
+		870785DB2DAFBBC5004B6E89 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 871A18552CE6422700C22A36 /* SwiftLintBuildToolPlugin */;
+			productRef = 870785DA2DAFBBC5004B6E89 /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -462,6 +466,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Gamid-Khalidov.QuranTracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -492,6 +500,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Gamid-Khalidov.QuranTracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -522,12 +534,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		871A18522CE6421200C22A36 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+		870785D92DAFBBB3004B6E89 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.57.0;
+				minimumVersion = 0.59.1;
 			};
 		};
 		8737EF852D1337A600D4939E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -557,9 +569,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		871A18552CE6422700C22A36 /* SwiftLintBuildToolPlugin */ = {
+		870785DA2DAFBBC5004B6E89 /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 871A18522CE6421200C22A36 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			package = 870785D92DAFBBB3004B6E89 /* XCRemoteSwiftPackageReference "SwiftLint" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 		8737EF862D1337A600D4939E /* FirebaseDatabase */ = {
